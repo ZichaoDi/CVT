@@ -1,0 +1,415 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.11.20)  4 MAY 2011 10:57
+entering extended mode
+**I:/MATLAB7/work/Sourceforge/sub_WENDY/progress*update/temporary.tex
+("I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/temporary.tex"
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
+("h:\Program Files\MiKTeX 2.8\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("h:\Program Files\MiKTeX 2.8\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks15
+\float@box=\box26
+\@float@everytoks=\toks16
+\@floatcapt=\box27
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\caption\caption.sty"
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\caption\caption3.sty"
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen105
+\captionmargin@=\dimen106
+\captionwidth=\dimen107
+\caption@indent=\dimen108
+\caption@parindent=\dimen109
+\caption@hangindent=\dimen110
+)
+\c@ContinuedFloat=\count89
+Package caption Info: float package is loaded.
+)
+\c@KVtest=\count90
+\sf@farskip=\skip43
+\sf@captopadj=\dimen111
+\sf@capskip=\skip44
+\sf@nearskip=\skip45
+\c@subfigure=\count91
+\c@subfigure@save=\count92
+\c@lofdepth=\count93
+\c@subtable=\count94
+\c@subtable@save=\count95
+\c@lotdepth=\count96
+\sf@top=\skip46
+\sf@bottom=\skip47
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\epsf\epsf.sty"
+This is `epsf.tex' v2.7.3 <23 July 2005>
+\epsffilein=\read1
+\epsfframemargin=\dimen112
+\epsfframethickness=\dimen113
+\epsfrsize=\dimen114
+\epsftmp=\dimen115
+\epsftsize=\dimen116
+\epsfxsize=\dimen117
+\epsfysize=\dimen118
+\pspoints=\dimen119
+) ("h:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip48
+
+For additional information on amsmath, use the `?' option.
+("h:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen120
+))
+("h:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen121
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count97
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count98
+\leftroot@=\count99
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count100
+\DOTSCASE@=\count101
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen122
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
+\dotsspace@=\muskip10
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
+\tag@help=\toks18
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
+\andhelp@=\toks19
+\eqnshift@=\dimen123
+\alignsep@=\dimen124
+\tagshift@=\dimen125
+\tagwidth@=\dimen126
+\totwidth@=\dimen127
+\lineht@=\dimen128
+\@envbody=\toks20
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("h:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+\@input{Wendy_macros.aux}
+("I:\MATLAB7\work\Sourceforge\sub_WENDY\progress update\Wendy_macros.tex"
+\c@alg=\count109
+\c@thm=\count110
+\c@pro=\count111
+\c@defn=\count112
+\c@asp=\count113
+\c@rmk=\count114
+)
+("I:\MATLAB7\work\Sourceforge\sub_WENDY\progress update\temporary.aux"
+
+LaTeX Warning: Label `fig:vsc' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:vsc' multiply defined.
+
+
+LaTeX Warning: Label `fig:direction' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:direction' multiply defined.
+
+
+LaTeX Warning: Label `fig:vsc' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:vsc' multiply defined.
+
+
+LaTeX Warning: Label `fig:direction' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:direction' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+ ("h:\Program Files\MiKTeX 2.8\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count115
+\scratchdimen=\dimen129
+\scratchbox=\box30
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen130
+\MPnumerator=\count119
+\everyMPtoPDFconversion=\toks23
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 11.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 13.
+ ("h:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 13.
+
+("h:\Program Files\MiKTeX 2.8\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+
+LaTeX Warning: No \author given.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 18.
+("h:\Program Files\MiKTeX 2.8\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
+
+<finedirvs13.jpg, id=1, 567.11874pt x 610.28pt>
+File: finedirvs13.jpg Graphic file (type jpg)
+ <use finedirvs13.jpg>
+<merit13.jpg, id=2, 567.11874pt x 610.28pt>
+File: merit13.jpg Graphic file (type jpg)
+ <use merit13.jpg>
+<coarsevscom257fig.jpg, id=3, 567.11874pt x 610.28pt>
+File: coarsevscom257fig.jpg Graphic file (type jpg)
+
+<use coarsevscom257fig.jpg>
+<coarsedirection257com.jpg, id=4, 567.11874pt x 610.28pt>
+File: coarsedirection257com.jpg Graphic file (type jpg)
+
+<use coarsedirection257com.jpg>
+Overfull \hbox (75.67087pt too wide) in paragraph at lines 47--51
+ [][][] 
+ []
+
+[1
+
+
+
+{C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map}] [2 <I:/MATLAB7/work/Sourc
+eforge/sub_WENDY/progress update/finedirvs13.jpg>] [3 <I:/MATLAB7/work/Sourcefo
+rge/sub_WENDY/progress update/merit13.jpg>] [4 <I:/MATLAB7/work/Sourceforge/sub
+_WENDY/progress update/coarsevscom257fig.jpg> <I:/MATLAB7/work/Sourceforge/sub_
+WENDY/progress update/coarsedirection257com.jpg>] [5] [6] [7]
+<merit33.jpg, id=38, 562.1pt x 421.575pt>
+File: merit33.jpg Graphic file (type jpg)
+ <use merit33.jpg>
+<coarsevs33.jpg, id=39, 562.1pt x 421.575pt>
+File: coarsevs33.jpg Graphic file (type jpg)
+ <use coarsevs33.jpg>
+<coarsedir33.jpg, id=40, 562.1pt x 421.575pt>
+File: coarsedir33.jpg Graphic file (type jpg)
+ <use coarsedir33.jpg>
+Overfull \hbox (75.67087pt too wide) in paragraph at lines 244--248
+ [][][] 
+ []
+
+[8 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/merit33.jpg>]
+<finedirvs25733.jpg, id=44, 562.1pt x 421.575pt>
+File: finedirvs25733.jpg Graphic file (type jpg)
+ <use finedirvs25733.jpg>
+[9 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/finedirvs25733.jpg> <
+I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/coarsevs33.jpg> <I:/MATLA
+B7/work/Sourceforge/sub_WENDY/progress update/coarsedir33.jpg>] [10]
+<coarsevs23.jpg, id=51, 562.1pt x 421.575pt>
+File: coarsevs23.jpg Graphic file (type jpg)
+ <use coarsevs23.jpg>
+<coarsedir23.jpg, id=52, 562.1pt x 421.575pt>
+File: coarsedir23.jpg Graphic file (type jpg)
+ <use coarsedir23.jpg>
+Overfull \hbox (75.67087pt too wide) in paragraph at lines 332--336
+ [][][] 
+ []
+
+<finedirvs23.jpg, id=53, 562.1pt x 421.575pt>
+File: finedirvs23.jpg Graphic file (type jpg)
+ <use finedirvs23.jpg>
+<merit23.jpg, id=54, 567.11874pt x 610.28pt>
+File: merit23.jpg Graphic file (type jpg)
+ <use merit23.jpg>
+<coarsevs1s12.jpg, id=55, 562.1pt x 421.575pt>
+File: coarsevs1s12.jpg Graphic file (type jpg)
+ <use coarsevs1s12.jpg>
+<coarsedir1s12.jpg, id=56, 562.1pt x 421.575pt>
+File: coarsedir1s12.jpg Graphic file (type jpg)
+ <use coarsedir1s12.jpg>
+Overfull \hbox (75.67087pt too wide) in paragraph at lines 362--366
+ [][][] 
+ []
+
+[11 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/coarsevs23.jpg> <I:/
+MATLAB7/work/Sourceforge/sub_WENDY/progress update/coarsedir23.jpg>] [12 <I:/MA
+TLAB7/work/Sourceforge/sub_WENDY/progress update/finedirvs23.jpg>] [13 <I:/MATL
+AB7/work/Sourceforge/sub_WENDY/progress update/merit23.jpg>]
+<finedir1s12.jpg, id=68, 562.1pt x 421.575pt>
+File: finedir1s12.jpg Graphic file (type jpg)
+ <use finedir1s12.jpg>
+<merit1s12.jpg, id=69, 562.1pt x 421.575pt>
+File: merit1s12.jpg Graphic file (type jpg)
+ <use merit1s12.jpg>
+<coarsevs1s22.jpg, id=70, 562.1pt x 421.575pt>
+File: coarsevs1s22.jpg Graphic file (type jpg)
+ <use coarsevs1s22.jpg>
+<coarsedir1s22.jpg, id=71, 562.1pt x 421.575pt>
+File: coarsedir1s22.jpg Graphic file (type jpg)
+ <use coarsedir1s22.jpg>
+Overfull \hbox (75.67087pt too wide) in paragraph at lines 391--395
+ [][][] 
+ []
+
+<finedir1s22.jpg, id=72, 562.1pt x 421.575pt>
+File: finedir1s22.jpg Graphic file (type jpg)
+ <use finedir1s22.jpg>
+<merit1s22.jpg, id=73, 562.1pt x 421.575pt>
+File: merit1s22.jpg Graphic file (type jpg)
+ <use merit1s22.jpg>
+<coarsevs1s32.jpg, id=74, 562.1pt x 421.575pt>
+File: coarsevs1s32.jpg Graphic file (type jpg)
+ <use coarsevs1s32.jpg>
+<coarsedir1s32.jpg, id=75, 562.1pt x 421.575pt>
+File: coarsedir1s32.jpg Graphic file (type jpg)
+ <use coarsedir1s32.jpg>
+Overfull \hbox (75.67087pt too wide) in paragraph at lines 420--424
+ [][][] 
+ []
+
+[14 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/coarsevs1s12.jpg> <I
+:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/coarsedir1s12.jpg> <I:/MAT
+LAB7/work/Sourceforge/sub_WENDY/progress update/coarsevs1s22.jpg> <I:/MATLAB7/w
+ork/Sourceforge/sub_WENDY/progress update/coarsedir1s22.jpg>] [15 <I:/MATLAB7/w
+ork/Sourceforge/sub_WENDY/progress update/finedir1s12.jpg>] [16 <I:/MATLAB7/wor
+k/Sourceforge/sub_WENDY/progress update/merit1s12.jpg>] [17 <I:/MATLAB7/work/So
+urceforge/sub_WENDY/progress update/finedir1s22.jpg>] [18 <I:/MATLAB7/work/Sour
+ceforge/sub_WENDY/progress update/merit1s22.jpg>]
+<finedir1s32.jpg, id=91, 562.1pt x 421.575pt>
+File: finedir1s32.jpg Graphic file (type jpg)
+ <use finedir1s32.jpg>
+<merit1s32.jpg, id=92, 562.1pt x 421.575pt>
+File: merit1s32.jpg Graphic file (type jpg)
+ <use merit1s32.jpg> [19 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update
+/coarsevs1s32.jpg> <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/coars
+edir1s32.jpg>] [20 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/fined
+ir1s32.jpg>] [21 <I:/MATLAB7/work/Sourceforge/sub_WENDY/progress update/merit1s
+32.jpg>] [22] [23]
+("I:\MATLAB7\work\Sourceforge\sub_WENDY\progress update\temporary.aux")
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3303 strings out of 495285
+ 46386 string characters out of 3180393
+ 105982 words of memory out of 3000000
+ 6460 multiletter control sequences out of 15000+200000
+ 11364 words of font info for 45 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 44i,10n,45p,321b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
+<h:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><h:/Pr
+ogram Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><h:/Program Fi
+les/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmmi10.pfb><h:/Program Files/MiKT
+eX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><h:/Program Files/MiKTeX 2.8/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb><h:/Program Files/MiKTeX 2.8/fonts/type1
+/public/amsfonts/cm/cmr17.pfb><h:/Program Files/MiKTeX 2.8/fonts/type1/public/a
+msfonts/cm/cmr7.pfb><h:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm
+/cmr8.pfb><h:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b><h:/Program Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsy7.pfb><h:/Pro
+gram Files/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on temporary.pdf (23 pages, 1293558 bytes).
+PDF statistics:
+ 144 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+

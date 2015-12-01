@@ -1,0 +1,23 @@
+This sub-directory has Matlab routines for a simple quadratic function,
+based on the 1-dimensional Laplacian.  The data matrices and vectors
+for the quadratic funciton are loaded from .mat files created by
+setup_prob.m.
+
+To run traditional optimization, type
+    opt
+to run successive refinement (optimize on coarsest grid, then next coarsest grid, etc.), type
+    refine
+
+FILES
+
+getf.m          - evaluate objective function
+getg_adj.m      - evaluate gradient of objective function
+
+setup_prob.m    - set up date files to define objective function
+do_setup.m      - set-up file for optimization (opt, refine, mg, etc.)
+build_interp.m  - set-up matrices for updates and downdates
+set_bounds.m    - [not used] define bounds on variables
+doplot.m        - [not used] plot results of optimization
+global_setup.m  - [not used] any computations needed before optimizing on a new grid
+downdate.m      - downdate procedure
+update.m        - update procedure

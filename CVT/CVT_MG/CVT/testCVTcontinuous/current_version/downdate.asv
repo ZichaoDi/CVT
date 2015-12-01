@@ -1,0 +1,24 @@
+function zH = downdate (zh,res_prob)
+global current_n IhH XY1
+
+if(res_prob==3)
+    zH=XY1;
+else
+m2=length(zh);
+n=m2/2;
+zh=reshape(zh,2,n);
+IH=IhH{current_n};
+% if(current_n==4)
+%     zH=zh*IhH4;
+% elseif(current_n==3)
+%     zH=zh*IhH3;
+% elseif(current_n==2)
+%     zH=zh*IhH2;
+% elseif(current_n==1)
+%     zH=zh*IhH1;
+% 
+% end
+m1=size(zH,2);
+zH=reshape(zH,2*m1,1);
+
+

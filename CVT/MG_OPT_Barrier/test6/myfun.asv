@@ -1,0 +1,11 @@
+function [f,g]=myfun1(x)
+
+t1 = 0.5;
+t2 = 1.7;
+t3 = 3.9;
+t4 = 9.3;
+miu = 1e2;
+f=t1+t2*x+t3*x^2-miu*log(t4-x);
+g=t2+2*t3*x+miu*1/(t4-x);
+F=f;
+G=g;

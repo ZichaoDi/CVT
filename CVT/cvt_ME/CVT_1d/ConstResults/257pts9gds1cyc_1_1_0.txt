@@ -1,0 +1,40 @@
+257  0.977115943714931710
+engy = 0.000003
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000002
+engy = 0.000001
+errAll = 0.014414
+errAll = 0.013948
+errAll = 0.012811
+errAll = 0.010501
+errAll = 0.007142
+errAll = 0.004836
+errAll = 0.004055
+errAll = 0.004007
+errAll = 0.003964
+errAll = 0.004008
+errAll = 0.003551
+errAll = 0.003148
+errAll = 0.002867
+errAll = 0.002637
+errAll = 0.002320
+errAll = 0.002190
+errAll = 0.002075
+errorV = 0.002075
+error0= 0.014809
+RelaxTotal = 3.986328
+rho = errorV(Ncycles)/error0 = 0.140130
+rho = rho^(1/Ncycles)=0.140130

@@ -1,0 +1,60 @@
+9  1.366993888631968400
+engy = 0.001386
+engy = 0.001244
+engy = 0.001150
+engy = 0.001145
+engy = 0.001144
+engy = 0.001127
+engy = 0.001045
+errAll = 0.087708
+errAll = 0.057510
+errAll = 0.021617
+errAll = 0.017549
+errAll = 0.017657
+errAll = 0.014821
+errAll = 0.005668
+errorV = 0.005668
+error0= 0.102377
+RelaxTotal = 3.562500
+rho = errorV(Ncycles)/error0 = 0.055362
+rho = rho^(1/Ncycles)=0.055362
+9  1.366993888631968400
+engy = 0.001386
+engy = 0.001244
+engy = 0.001150
+engy = 0.001145
+engy = 0.001144
+engy = 0.001127
+engy = 0.001045
+errAll = 0.087708
+errAll = 0.057510
+errAll = 0.021617
+errAll = 0.017549
+errAll = 0.017657
+errAll = 0.014821
+errAll = 0.005668
+errorV = 0.005668
+error0= 0.102377
+RelaxTotal = 3.562500
+rho = errorV(Ncycles)/error0 = 0.055362
+rho = rho^(1/Ncycles)=0.055362
+9  1.366993888631995700
+engy = 0.001434
+engy = 0.001291
+engy = 0.001201
+engy = 0.001197
+engy = 0.001197
+engy = 0.001180
+engy = 0.001097
+errAll = 0.087708
+errAll = 0.057510
+errAll = 0.021617
+errAll = 0.017549
+errAll = 0.017657
+errAll = 0.014821
+errAll = 0.005668
+errorV = 0.005668
+error0= 0.102377
+RelaxTotal = 3.562500
+rho = errorV(Ncycles)/error0 = 0.055362
+rho = rho^(1/Ncycles)=0.055362

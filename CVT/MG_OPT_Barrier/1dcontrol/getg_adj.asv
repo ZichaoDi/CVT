@@ -1,0 +1,26 @@
+function g = getg_adj(v)
+
+%----------------------------------------------------------
+% Compute the gradient g(v) via the adjoint approach.
+%
+% $Id: getg_adj.m,v 0.0 2001/05/24 15:33:52 buckaroo Exp buckaroo $
+%
+
+global X N current_n ustar current_u
+global beta
+
+%----------------------------------------------------------
+
+j = find(N==current_n);
+x = X(1:N(j),j);
+nx = length(x);
+dx=x(2)-x(1);
+current_y=v;
+current_u(1)=(v(2)-2*v(1))/dx^2;
+current_u(nx)=(v(end-1)-2*v(end))/dx^2;
+for i=2:nx-1
+current_u(i)=(v(i-1)-2*v(i)+v(i+1))/dx^2;
+end
+current_ustar = ustar{j};
+g = (current_y - current_ustar);
+

@@ -1,0 +1,168 @@
+3  0.402154690464579690
+3  0.804309380931807370
+3  0.804309380298925510
+3  0.804309364794314140
+3  0.804310027773796010
+3  0.804296987340877180
+3  0.800282397956356810
+3  0.000000000000000000
+3  NaN
+3  NaN
+engy = 0.009268
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+errAll = 0.004351
+errAll = 0.000321
+errAll = 0.000121
+errAll = 0.000026
+errAll = 0.000006
+errAll = 0.000002
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errorV = 0.000121
+errorV = 0.000002
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+error0= 0.011547
+RelaxTotal = 22.500000
+rho = errorV(Ncycles)/error0 = 0.000000
+rho = rho^(1/Ncycles)=0.044901
+3  0.402154690464659740
+3  0.804309380955096410
+3  0.804309380429516940
+3  0.804309359577809250
+3  0.804306918745777980
+3  0.804256424293130930
+3  0.809414665172023870
+3  1.043498389499901700
+3  Inf
+3  Inf
+engy = 0.009268
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+errAll = 0.004351
+errAll = 0.000321
+errAll = 0.000121
+errAll = 0.000026
+errAll = 0.000006
+errAll = 0.000002
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errorV = 0.000121
+errorV = 0.000002
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+error0= 0.011547
+RelaxTotal = 22.500000
+rho = errorV(Ncycles)/error0 = 0.000000
+rho = rho^(1/Ncycles)=0.032676

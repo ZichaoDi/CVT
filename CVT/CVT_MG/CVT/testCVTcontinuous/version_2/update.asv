@@ -1,0 +1,47 @@
+function zh = update (zH,res_prob)
+
+global  current_n IHh1  IHh2  IHh3 IHh4  N Hh 
+n=length(zH)/2;
+zH=reshape(zH,2,n);
+% if n==globalN(2)
+% zh=B2*zH';
+% elseif n==globalN(3)
+% zh=B3*zH';  
+% elseif n==globalN(4)
+% zh=B4*zH'; 
+% end
+% if (n==globalN(2))
+%     IHh=IhH1;
+% elseif(n==globalN(3))
+%     IHh=IhH2;
+% elseif(n==globalN(4))
+%     IHh=IhH3;
+% end
+ %fprintf('rowsize=%d,columusize=%d,size(points)=%d\n',size(IHh,1),size(IHh ,2),n);
+ 
+ IHh=cell2mat(Hh);
+ zh=IHh*zH';
+%  if(current_n==N(1))
+% zh=IHh4*zH';
+%  elseif(current_n==N(2))
+%    zh=IHh3*zH'; 
+%  elseif(current_n==N(3))
+%      zh=IHh2*zH';
+%       elseif(current_n==N(4))
+%      zh=IHh1*zH';
+%  end
+m=size(zh,1);
+zh=reshape(zh',2*m,1);
+
+% zh=xy';
+% if (length(zh) == N(1));figure(2); hold on;
+%     plot(zh(:,1),zh(:,2),'rx','linewidth',2);
+%     plot(zH(1,:),zH(2,:),'BO','linewidth',2);
+% elseif(length(zh) == N(2));figure(3); hold on;
+%     plot(zh(:,1),zh(:,2),'rx','linewidth',2);
+%     plot(zH(1,:),zH(2,:),'BO','linewidth',2);
+% elseif(length(zh) == N(3));figure(4); hold on;
+%     plot(zh(:,1),zh(:,2),'rx','linewidth',2);
+%     plot(zH(1,:),zH(2,:),'BO','linewidth',2);
+% end
+% drawnow;

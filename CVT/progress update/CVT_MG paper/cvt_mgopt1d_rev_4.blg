@@ -1,0 +1,30 @@
+This is BibTeX, Version 0.99cThe top-level auxiliary file: cvt_mgopt1d_rev_4.aux
+The style file: siam.bst
+Database file #1: CVT_bib.bib
+I was expecting a `,' or a `}'---line 64 of file CVT_bib.bib
+ :   journal = {Numerical Linear Algebra and its Applications}
+ :                                                            .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 295 of file CVT_bib.bib
+ : 
+ : @book{korn,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 415 of file CVT_bib.bib
+ :   journal = {Journal of Royal Statistical Society B}
+ :                                                     .
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 550 of file CVT_bib.bib
+ :   
+ :   year = "1984"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--string name "siopt" is undefined
+--line 574 of file CVT_bib.bib
+Warning--I didn't find a database entry for "DGJ10"
+Warning--empty institution in yavneh03
+Warning--can't use both volume and number fields in Levy10
+Warning--empty journal in NaNo91a
+Warning--empty journal in trotten
+Warning--empty year in Brain04
+(There were 4 error messages)

@@ -1,0 +1,15 @@
+
+engy = load('engy129.txt')
+
+size(engy)
+xx = 64:8:168;
+yy = 1:1:168;
+figure(1);
+subplot(2,2,1);
+plot(xx,engy(xx),'b.-');
+subplot(2,2,2);
+semilogy(yy,engy(yy),'b.-');
+subplot(2,2,3);
+semilogy(xx,engy(xx),'b.-');
+subplot(2,2,4);
+semilogy(yy,engy(yy),'b.-');

@@ -1,0 +1,38 @@
+%----------------------------------------------------------------------
+% Set up a problem for optimization [multigrid or regular]
+%----------------------------------------------------------------------
+clear  functions
+global bounds V_LOW V_UP
+global grad_type
+global B1 B2 B3
+global array
+global problem_name
+%----------------------------------------------------------------------
+% Specify technique for calculating gradient
+%----------------------------------------------------------------------
+grad_type = 'adj';  % 'adj' = adjoint/exact
+                    % 'fdr' = finite-difference [real]
+                    % 'fdi' = finite-difference [complex]
+%----------------------------------------------------------------------
+% Initialize arrays for discretizations
+%----------------------------------------------------------------------
+XY=load('coarsencentroid0.txt');
+XY=XY';
+m=size(XY,2);
+array=load('voronoi_2d_binning_example.txt');
+[XY1,B1,globalind1] = coarsen2_mlevel(XY,XY);
+[XY2,B2,globalind2] = coarsen2_mlevel(XY2,XY2);
+[XY3,B3,globalind3] = coarsen2_mlevel(XY3,XY3);
+N=[length(XY),length(XY1),length(XY2),length(XY3)];%%discretization level
+
+
+build_interp;
+
+nmax = N(1);
+m = length(N);
+
+v0=reshape(XY,2*m,1);
+%----------------------------------------------------------------------
+% Initialization for optimization
+%----------------------------------------------------------------------
+bounds = 0; % no bounds on variables

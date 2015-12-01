@@ -1,0 +1,10 @@
+function zh = update (zH,res_prob)
+
+global  current_n   N IHh XYbd bd
+n=length(zH)/2;
+zH=reshape(zH,2,n);
+in=find(n==N);
+ Ih=IHh{in};
+ zh=Ih*zH';
+m=size(zh,1);
+zh=reshape(zh',2*m,1);

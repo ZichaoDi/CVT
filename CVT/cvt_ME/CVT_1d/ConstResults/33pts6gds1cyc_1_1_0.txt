@@ -1,0 +1,56 @@
+33  1.372458459156135500
+engy = 0.000230
+engy = 0.000210
+engy = 0.000168
+engy = 0.000167
+engy = 0.000167
+engy = 0.000167
+engy = 0.000166
+engy = 0.000166
+engy = 0.000159
+engy = 0.000151
+engy = 0.000099
+errAll = 0.073934
+errAll = 0.069913
+errAll = 0.052602
+errAll = 0.051365
+errAll = 0.050171
+errAll = 0.047354
+errAll = 0.048677
+errAll = 0.049416
+errAll = 0.043052
+errAll = 0.043216
+errAll = 0.041604
+errorV = 0.041604
+error0= 0.078370
+RelaxTotal = 3.890625
+rho = errorV(Ncycles)/error0 = 0.530864
+rho = rho^(1/Ncycles)=0.530864
+33  1.372458459156167700
+engy = 0.000247
+engy = 0.000225
+engy = 0.000180
+engy = 0.000179
+engy = 0.000179
+engy = 0.000179
+engy = 0.000178
+engy = 0.000178
+engy = 0.000170
+engy = 0.000162
+engy = 0.000105
+errAll = 0.073934
+errAll = 0.069913
+errAll = 0.052602
+errAll = 0.051365
+errAll = 0.050171
+errAll = 0.047354
+errAll = 0.048677
+errAll = 0.049416
+errAll = 0.043052
+errAll = 0.043216
+errAll = 0.041604
+errorV = 0.041604
+error0= 0.078370
+RelaxTotal = 3.890625
+rho = errorV(Ncycles)/error0 = 0.530864
+rho = rho^(1/Ncycles)=0.530864

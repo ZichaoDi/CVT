@@ -1,0 +1,24 @@
+function f = getf(v)
+
+%------------------------------------------------------------------
+% Compute f(v) for the model advection least-squares problem.
+%
+% $Id: getf.m,v 0.0 2001/05/24 15:33:52 buckaroo Exp buckaroo $
+%
+
+global X N current_n ustar current_u
+global beta
+
+%------------------------------------------------------------
+
+j = find(N==current_n);
+x = X(1:N(j),j);
+nx = length(x);
+dx=x(2)-x(1);
+current_y=v;
+current_u(1)=(v(2)-2*v(1))
+for i=1:nx
+current_u(i)=v(nx+1:end);
+current_ustar = ustar{j};
+r = (current_y - current_ustar);
+f=1/2*r'*r+beta/2*current_u'*current_u;;

@@ -1,0 +1,190 @@
+-------------------------------
+     09-Oct-2003 15:50:29
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+-------------------------------
+     05-Nov-2003 10:37:37
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+
+MGIT:
+
+MGIT:
+
+MGIT:
+-------------------------------
+     18-Sep-2004 15:29:16
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   
+   MG line search: alpha =  3.906250e-003
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+-------------------------------
+     02-Mar-2005 11:38:06
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+
+MGIT:
+   Testing bounds (pre-smooth)
+   Testing bounds (coarsest grid)
+   Testing bounds (post-smooth)
+-------------------------------
+     19-Apr-2005 09:49:10
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+-------------------------------
+     19-Apr-2005 10:05:55
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+-------------------------------
+     19-Apr-2005 10:08:58
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+-------------------------------
+     20-Apr-2005 11:52:42
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+-------------------------------
+     20-Apr-2005 11:54:48
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+-------------------------------
+     20-Apr-2005 16:10:23
+              d:\matlabr11\multigrid\MP_ADVECTION1
+
+FMG:
+   Testing bounds (coarsest grid)
+
+MGIT:
+   Testing bounds (coarsest grid)
+
+MGIT:

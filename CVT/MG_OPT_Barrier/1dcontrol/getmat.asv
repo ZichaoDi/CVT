@@ -1,0 +1,64 @@
+% Generate test problem for Wendy (10/25/10)
+% of the form
+%          minimize    0.5 |y-y*|^2 + 0.5 beta |u|^2
+%          subject to  - Del y = u
+% where Del is the 1-dimensional discrete Laplacian.
+% Here I scale the norm for |u| by a diagonal matrix D.
+
+%--------------------------------------------------------
+% Generate discrete Laplacian
+
+n = 255;
+h = 1/(n+1);
+A = zeros(n,n);
+A(1,1) = -2;
+for i=2:n;
+    A(i,i) = -2;
+    A(i-1,i) = 1;
+    A(i,i-1) = 1;
+end;
+A = (1/h^2)*A;
+Ai = inv(A);
+
+%--------------------------------------------------------
+% Specify norm for |u|, and specify beta
+
+beta = 1;
+D = logspace(2,4,n);
+D = diag(D);
+
+%--------------------------------------------------------
+% Plot eigenvalues of the reduced Hessian
+
+H = Ai*Ai + beta*D; H = (H+H')/2;
+e = eig(H);
+figure(11), plot(e), title('Eigenvalues of Reduced Hessian')
+
+%--------------------------------------------------------
+% Specify y* and determine u*
+
+tt = linspace(0,1,n+2)';
+t  = tt(2:end-1);
+ys = 4000*( sin(pi*t) + 1.25*sin(4*pi*t) - 1.75*sin(6*pi*t) + 4.0*sin(8*pi*t) ) + 5*sin(16*pi*t);
+%ys =  -(t-1/2).^2+1/4;
+yy = [0; ys; 0];
+figure(21), plot(tt,yy), title('Solution: y*')
+
+us = H \ (A \ ys);
+uu = [0; us; 0];
+figure(31), plot(tt,uu), title('Solution: u*')
+
+disp('Compute objective function and gradient at u* (version 1)')
+v1 = Ai*us-ys;
+v2 = Ai*v1;
+v3 = beta*D*us;
+g_us = v2+v3;
+f_us = 0.5*v1'*v1 + 0.5*beta*us'*D*us
+n_g_us = norm(g_us,'inf')
+
+disp('Compute objective function and gradient at u* (version sfun)')
+do_setup;
+cu
+[f,g]=sfun(us);
+f_s=f
+g_s=norm(g,'inf')

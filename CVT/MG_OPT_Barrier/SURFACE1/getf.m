@@ -1,0 +1,29 @@
+function f = sfun (z)
+%--------------------------------------------------------------
+% objective function for soap-film minimal surface
+%--------------------------------------------------------------
+n2 = length(z);
+nm = sqrt(n2);
+zs = reshape(z,nm,nm);
+nx = nm + 2;
+ny = nm + 2;
+%--------------------------------------------------------------
+% set up boundary conditions
+%--------------------------------------------------------------
+[x,y,hx,hy,sx0,sy0,sx1,sy1] = getborder(nx,ny);
+zs = [sx0
+      sy0(2:(ny-1)) zs sy1(2:(ny-1))
+      sx1];
+%--------------------------------------------------------------
+% calculate function value
+%--------------------------------------------------------------
+f  = 0;
+for i=2:ny;
+for j=2:nx;
+  tx = zs(i,j) - zs(i,j-1);
+  ty = zs(i,j) - zs(i-1,j);
+  val = 1 + tx^2/hx^2 + ty^2/hy^2;
+  f           = f + sqrt(val);
+end;
+end;
+f = f*hx*hy;

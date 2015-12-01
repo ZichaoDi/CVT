@@ -1,0 +1,176 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{epsf,amsmath,amssymb,amsfonts}
+\newcommand{\ds}{\displaystyle}
+
+
+\include{CVT_macros}
+
+\title{\bf Reading Progress}
+
+\author{Zichao Di\thanks{Department of Mathematical Sciences, George Mason University,
+  Fairfax, VA 22030. ({\tt zdi@gmu.edu})}}
+
+
+\begin{document}
+  \maketitle 
+
+
+
+\section{Journal}
+\subsection{Linear/Nonlinear Optimization}
+\begin{itemize}
+\item In  \cite{L1}, 
+\item In \cite{NA},
+\item In \cite{RJ1}, an algorithm  as an extension of primal interior point methods to non-convex optimization for minimizing a nonlinear function subject to nonlinear equality and inequality constraints is described. Basicly, it applies SQP to a sequence of barrier problems, and uses trust regions to ensure the robustness of the iteration. The analysis shows the local behavior of this method is similar to that of other interior point methods, but its global behavior is quite different. One benefit of using trust region is the ability of this method to deal with indefiniteness of the Hessian and rank deficiency of the constraints. Although this algorithm has a unique feature that the use of trust region allows for the direct use of second derivatives and the inaccurate solution of subproblems, but since their merit function is non-differentiable  to get a fast convergence may necessitate use of a second-order correction.
+\begin{itemize}
+\item watch-dog strategy
+\item Maratos effect: see Maratos \cite{MAR1}
+\end{itemize}
+\end{itemize} 
+
+
+\subsection{Multigrid}
+\begin{itemize}
+\item In  \cite{M1}, it presents application of an optimization-based multigrid method to state constrained aerodynamic shape optimization problems. This work is extended from their previous paper \cite{SB2} about the same stragety on aerodynamic shape optimization problems without additional state constraints. 
+\begin{itemize}
+\item Related Definition:
+\begin{itemize}
+\item CFD: computational fluid dynamics
+\item pseudotimestepping method: $x^{m+1}=x^m+\Delta t \frac{dx}{dt}$
+\item Gradient consistency
+\item Grid moving technique
+\end{itemize}
+\item Contribution:
+\begin{itemize}
+\item The underlying relaxation method for multigrid they were using is simultaneous pseudo-timestepping which has shown a drastic improvement over the traditional gradient method with respect to the computation cost. Then the application of their 'optimization-based' multigrid method reduced the number of iterations by more than 65% of that of single grid computations 
+\item In stead of using the correction term $\nabla f_H(I_h^{H}x_h)-I_h^H \nabla f_h(x_h)$ for coarse grid subproblem as in MG/OPT, they chose $I_h^{H}\nabla f_h(x_h)$ as correction term for objective coarse grid problem. And also in MG/OPT, we choose merit function to deal with the constraint. in this paper, they also added a correction term $I_h^{H}\nabla c_h(x_h)$ to the coarse grid additional state constraint where $\nabla c_h$ is the reduced gradient of the additional state. By proving the reduced gradients of the coarse-grid problem are the projection of the reduced gradients of the fine-grid problem with an additive correction to ensure the faster convergence. 
+\end{itemize}
+\end{itemize}
+
+\item In \cite{DIA}, 
+
+\item In \cite{m2}, a recursive trust-region method is introduced for the solution of bound-constrained nonlinear nonconvex optimization problems, this new method uses the infinity norm to define the shape of the trust region, which is well adapted to the handling of bounds and also the use of successive coordinate minimization as a smoothing technique.
+\begin{itemize}
+\item Contribution: 
+\begin{itemize}
+\item With infinity norm for the trust region step definition, the alternative multilevel algorithm doesn't require any imposed preconditioner and is much less restrictive for the lower-levels steps than its Euclidean relative for the unconstrained case. 
+\item They proved global convergence of the new algorithm to first-order critical points, that is convergence from arbitrary starting points to limit points satisfying the first-order optimality conditions. 
+\item This multilevel algorithm can also be applied to solve sets of nonlinear equations as considering the minization of some norm of the residuals with the proof of associated global convergence.  
+\end{itemize}
+\item The strategy they used to adapt the bound constraint $l_{H}$ and $u_{H}$ to the coarse grid is componentwise defined by
+\[ [l_H]_j := [I_h^{H} x_{h}]_j +\frac{1}{\|I_H^{h}\|_{\infty}}\max_{t=1\dots n_h} \left\{ \begin{array}{ll}
+                                                                                                                                          [l-x_h]_t   &  \mbox{ when $[I_H^h]_{tj}>0$}; \\ {[x_h-u]_t}  &  \mbox{ when $ [I_H^h]_{tj}<0$}.
+ \end{array} \right. \]
+and
+\[ [u_H]_j := [I_h^{H} x_{h}]_j +\frac{1}{\|I_H^{h}\|_{\infty}}\min_{t=1\dots n_h} \left\{ \begin{array}{ll}
+                                                                                                                                         [u-x_h]_t   &  \mbox{ when $[I_H^h]_{tj}>0$}; \\ {[x_h-l]_t}  &  \mbox{ when $ [I_H^h]_{tj}<0$}.
+ \end{array} \right. \]
+In \cite{ej1}, it shows that, in a less general case, that this definition enforces updated solution from coarse grid stays feasible in fine grid. 
+
+\item Apply their idea of treating the bound constraint to MG/OPT on 1-D Laplacian, then the coarse grid bounds almost lie on the variables themselves so that almost no move on the current solution which results in a tiny descent step. 
+\end{itemize}
+
+
+\item In \cite{M3}, it describes an efficient numerical solution of linear-quadratic optimal control problems with additional constraints on the control. They treat the complementarity conditons by a primal-dual active-set method as outer iteration. At each iteration, they solve KKT system  within a multigrid framework using preconditioned Richardson iteration as underlying smoother. The numerical experiments show that superlinear convergence of the outer iteration is obtained and the total cost for the solution of optimal control problems is just a small multiple of the cost for the solution of the constraint equations only.\\
+
+Notice here in their multigrid framework, the basic idea is to apply the traditional multigrid to the equation system of discretized PDE constraints. The difference is they don't require $I_H^h =C {I_{h}^H}^T $, instead, they choose downdate as the four point average restriction and update being the bilinear interpolation. Furthermore, when applying the bilinear interpolation to obtain a fine grid value, the stencil entries for the active nodes are set to zero. 
+\[  R=\frac{1}{4} \left [ \begin{array}{ll} 
+ 1 & 1 \\
+1 & 1 \end{array}\right ]   \]
+
+\[  P=\frac{1}{16} \left] \begin{array}{llll} 
+ 1 & 3 & 3 & 1\\
+ 3 & 9 & 9 & 3\\
+ 3 & 9 & 9 & 3\\
+ 1 & 3 & 3 & 1\\
+ \end{array}\right [   \]
+
+\item In the lecture note \cite{AL1}, it gives an introduction to advanced multilevel strategies fro solving unconstrained and constrained optimization problems governed by PDE. It starts with an introduction of classical multilevel schemes for linear and nonlinear scalar elliptic problems that also correspond to unconstrained optimization problems as minimization of appropriate energe functionals as the implementation of MG/OPT.  By giving the definition of smoothing factor and convergence factor to measure the convergence ability,they proceed with a local Fourier analysis to investigate the convergence properties seperately to different approachs as V-cycle, FAS, some single grid iterative methods. Finally, it discussed some globalization issues with multilevel strategy.
+
+\item In \cite{ap1}, it describes two multilevel schemes, Multilevel Subspace Minimization Algorithm for linear systems and the FAS Constrained Optimization Algorithm for non-linear systems, for solving inequality constrained finite element second-order elliptic problems. The first important feature of the schemes are that they utilize element agglomeration coarsening away from the constraint set, which allows for easy construction for coarse level approximations that straightforwardly satisfy the fine grid constraints. Second is that they provide monotone reduction of the energy functional throughout the multilevel cycles by using monotone smoothers such as projected Gauss-Seidel iteration. \\
+
+What I have tried motivated from this work is to apply its setting of the coarse grid constraint for 1-d Laplacian problem both with TN and fmincon to accelarate the convergence of MG/OPT.
+
+\item In \cite{ma1}, 
+
+\item In \cite{AC},
+
+\item In \cite{TBV}
+
+\item In \cite{JV1}
+
+\item In \cite{RK2}
+
+\item In \cite{RR}
+
+\item In \cite{RR2}
+
+\item In \cite{WH}
+
+\item In \cite{RK3}
+
+\item In \cite{RK4}
+
+\item In \cite{RK}, it illustrated how to formulize the multilevel or domain decomposition methods for the constrained minimization of convex or non-convex functionals. Also, it pointed out a drawback by adapting the multilevel decomposition to the nonlinearities is that spurious coarse grid corrections might spoil the convergence of the nonlinear method. The possible remedy may use solution dependent interpolation operators and bilinear forms. 
+
+\item In \cite{AD}, it is concerned with the question of constructing efficient multigrid preconditioners for the linear systems arising when applying semismooth Newton methods to large-scale linear-quadratic optimization problems constrained by smoothing operators with box-constraints on the controls. It is shown that, for certain discretizations of the optimization problem, the linear systems to be solved at each semismooth Newton iteration reduce to inverting principal minors of the Hessian of the associated unconstrained problem. As in the case when box-constraints on the controls are absent, the multigrid preconditioner introduced here is shown to increase in quality as the mesh-size decreases, resulting in a number of iterations that decreases with mesh-size. However, unlike the unconstrained case, the spectral distance between the preconditioners and the Hessian is shown to be of suboptimal order in general
+
+\end{itemize}
+
+
+\subsection{Optimal Control}
+\begin{itemize}
+\item 'Recent advances in the analysis of pointwise state-constrained elliptic optimal control problems', E. Casas \& F. Troltzsch  \cite{ec1}
+\begin{itemize}
+\item Definition: 
+\begin{itemize}
+\item Caratheodory function: Let ${\bf P}$ be the class of functions $p$ of the form $p(z)=1+\sum_{n=1}^{\infty}p_n z^{n}$ which are analytic in the open disk ${\bf U}=\{z\in C: |z|<1\}$. If $p$ in ${\bf P}$ satisfies $Re\{p(z)>0\}$, then $p$ is the Catatheodory function.
+\item Fundamental solution $F$: $LF=\delta$ where $L$ is a linear partial differential operator
+\item Heaviside step function: $H(x)=\int_{-\infty}^{x}\delta (t)dt$ is used to find the fundamental soluton
+\item Slater Condition: Given constraint $g_j (x)\leq 0$, $\exists \bar x \in X\cap D(f)$ s.t. $g_j (\bar x)<0$
+\end{itemize}
+\item It is important to have the uniqueness of lagrange multipliers since the non-uniqueness may lower \cite{M1} the efficiency of numerical methods
+\item Proved the condition for the Lipschitz of the optimal control and for the uniqueness of Lagrange multipliers
+\end{itemize}
+
+\item In \cite{CA1}
+\end{itemize}
+
+
+\subsection{CVT}
+
+
+
+\section{Book}
+\subsection{ Optimal Control of Partial Differential Equations  \cite{FT1}}
+\begin{itemize}
+\item Chapter 1:
+\begin{itemize}
+\item Concept of optimal control
+\item Existence of optimal controls: Theorem 11
+\item Adjoint state: easier than to compute inverse;
+\item Variational inequality; KKT condition
+\end{itemize}
+\item Chapter 6: Optimization problems in Banach spaces
+\begin{itemize}
+\item The Karush-Kuhn-Tucker conditions
+\item Control problems with state constraints
+\end{itemize}
+\end{itemize}
+
+\subsection {Multigrid \cite{trotten}}
+
+
+
+\bibliographystyle{plain} 
+\bibliography{wendy_reading}
+
+
+\end{document}
+
+

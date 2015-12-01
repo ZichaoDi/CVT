@@ -1,0 +1,48 @@
+constrained problem with Normally distributed pseudorandom numbers as initial guess
+
+opt
+  it     nf     cg           f             |g|
+   0      1      0    1.67643270e+005   6.9e-004
+   1      2      2    1.67567324e+005   7.6e-006
+convergence rate=1.000000
+Time elapsed: 16.8594 sec
+
+-------------------------
+Optimization costs per grid
+-------------------------
+N:        519   259   129
+-------------------------
+NF(it):     1     0     0
+NF(nf):     2     0     0
+NF(cg):     2     0     0
+-------------------------
+
+mg
+In  mgrid: n = 519
+  it     nf     cg           f           |g|
+   0      1      0    1.67643270e+005   6.9e-004
+   1      2      2    1.67567324e+005   7.6e-006
+In  mgrid: n = 259
+  it     nf     cg           f           |g|
+   0      1      0    4.17621995e+004   4.8e-006
+In  mgrid: n = 129
+  it     nf     cg           f           |g|
+   0      1      0    1.03759186e+004   4.2e-006
+MODLNP 03: |p| = 0
+   1      2      1    1.03759186e+004   4.2e-006
+In  mgrid: n = 259
+  it     nf     cg           f           |g|
+   0      1      0    4.17621995e+004   4.8e-006
+In  mgrid: n = 519
+  it     nf     cg           f           |g|
+   0      1      0    1.67567324e+005   7.6e-006
+
+-------------------------
+Optimization costs per grid
+-------------------------
+N:        519   259   129
+-------------------------
+NF(it):     1     0     1
+NF(nf):     3     2     2
+NF(cg):     2     0     1
+-------------------------

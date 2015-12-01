@@ -1,0 +1,6 @@
+function [res_lb,res_ub,sa,sc,sna,snc]=surrogate(N)
+res_lb=zeros(N,1);res_ub=zeros(N,1);
+sa=[];
+%sc=[];
+sc=
+sna=[];snc=[];

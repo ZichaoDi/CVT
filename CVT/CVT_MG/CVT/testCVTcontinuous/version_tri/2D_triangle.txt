@@ -1,0 +1,16 @@
+size           cycle_number               time                    convergence factor               energy                        ||g||
+  55               4                      6.22                    0.023148                        41764.34239                     0.00003739
+ 253               4                     22.69                    0.012167                        10441.08560                     0.00009555
+1081               5                     88.00                    0.009287                        2610.27140                     0.00003832size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+  55               2                     18.25                    0.014293                        41764.34239                     0.00029003
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+  10               3                      6.39                    0.001932                        167057.36956                     0.00027214
+  55               3                     31.94                    0.017726                        41764.34239                     0.00127630
+ 253               4                    196.13                    0.010662                        10440.17925                     0.00001710
+1081               4                    901.89                    0.047283                        2610.21475                     0.00001077
+4465               4                    4693.61                    0.053411                        652.56431                     0.00000273
+

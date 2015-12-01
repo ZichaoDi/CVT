@@ -1,0 +1,28 @@
+function  global_setup(n,v0)
+%----------------------------------------------------------------------
+% Perform "global" computations for optimization at a
+% specified discretization (corresponding to n)
+%----------------------------------------------------------------------
+global  IHh IhH  bond N
+m=length(v0)/2;
+XY=reshape(v0,2,m);
+[XY2,bond,B0,B,globalind] = coarsen2_mlevel(XY,XY);
+B0=B;
+B1=1/4*B;
+% if (n==N(1))
+%     IHh4=B0;
+%     IhH4=B1;
+% elseif(n==N(2))
+%     IHh3=B0;
+%     IhH3=B1;
+% elseif(n==N(3))
+%     IHh2=B0;
+%     IhH2=B1;
+% elseif (n==N(4))
+%     IHh1=B0;
+%     IhH1=B1;
+% end
+n=length()
+in=find(N==m);
+    IHh{in}=B0;
+    IhH{in}=B1;

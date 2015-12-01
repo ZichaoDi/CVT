@@ -1,0 +1,41 @@
+%----------------------------------------------------------------------
+% Set up a problem for optimization [multigrid or regular]
+%----------------------------------------------------------------------
+clear  functions
+global bounds
+global grad_type
+global B2 B3 B4 globalind1 globalind2 globalind3
+global array N VXY mminx mmaxx mminy mmaxy XY XY1 XY2 XY3 globalN
+%----------------------------------------------------------------------
+% Specify technique for calculating gradient
+%----------------------------------------------------------------------
+grad_type = 'adj';  % 'adj' = adjoint/exact
+                    % 'fdr' = finite-difference [real]
+                    % 'fdi' = finite-difference [complex]
+%----------------------------------------------------------------------
+% Initialize arrays for discretizations
+%----------------------------------------------------------------------
+array=load('voronoi_2d_binning_example.txt');
+ %array=load('dataset1e6.txt');
+VXY=array(:,1:2);
+SVXY=array(:,3);
+EVXY=array(:,4);
+mminx=min(VXY(:,1));mmaxx=max(VXY(:,1));
+mminy=min(VXY(:,2));mmaxy=max(VXY(:,2));
+XY=load('coarsencentroid0.txt');
+%XY=VXY(1:422,:);
+XY=XY';
+[XY1,B2,globalind1] = coarsen_mlevel(XY,XY);
+[XY2,B3,globalind2] = coarsen_mlevel(XY1,XY1);
+[XY3,B4,globalind3] = coarsen_mlevel(XY2,XY2);
+globalN=[length(XY),length(XY1),length(XY2),length(XY3)];
+N=[length(XY),length(XY1),length(XY2),length(XY3)];%%discretization level
+m=size(XY,2);
+
+nmax = N(1);
+
+v0=reshape(XY,2*m,1);
+%----------------------------------------------------------------------
+% Initialization for optimization
+%----------------------------------------------------------------------
+bounds = 0; % no bounds on variables

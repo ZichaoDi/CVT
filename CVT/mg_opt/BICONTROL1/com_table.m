@@ -1,0 +1,29 @@
+global nn;
+clc
+    fid = fopen('CtableMGOPT_DC.txt','a'); 
+    fprintf(fid,'size           cycle_number               time                    convergence rate               energy                        ||g||\n');    
+for i=10:11
+    nn=i;
+    %opt;
+    j=1;
+    t=cputime;
+    mg1;
+    dif=[];
+    while(j>=0)
+        [fold,gold]=sfun(v);
+        mgit1;
+        [f,g]=sfun(v);
+        dif(j)=norm(f-fold);
+        %conv=(norm(f-F)<1e-8);
+        conv=(dif(j)<=1e-8);
+        if(conv)
+            convergence=norm(dif(j))/norm(dif(j-1));
+            %fprintf('convergence rate=%f\n',convergence);
+            break;
+        end
+        j=j+1;
+    end
+e=cputime-t;
+    fprintf(fid,'%4i            %4i                    %6.2f                    %6.6f                      %6.5f                     %6.8f\n',nn,j,e,convergence,f,norm(g));
+    end
+fclose(fid);

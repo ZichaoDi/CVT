@@ -1,0 +1,34 @@
+9  0.005979692307839693
+9  0.028124352938433336
+9  0.281208689660117750
+engy = 0.001082
+engy = 0.001055
+engy = 0.001052
+engy = 0.001052
+engy = 0.001032
+engy = 0.001029
+engy = 0.001029
+engy = 0.001029
+engy = 0.001029
+engy = 0.001029
+engy = 0.001029
+engy = 0.001029
+errAll = 0.015181
+errAll = 0.006299
+errAll = 0.006041
+errAll = 0.006094
+errAll = 0.002026
+errAll = 0.000994
+errAll = 0.001018
+errAll = 0.001009
+errAll = 0.000477
+errAll = 0.000129
+errAll = 0.000096
+errAll = 0.000100
+errorV = 0.006094
+errorV = 0.001009
+errorV = 0.000100
+error0= 0.026296
+RelaxTotal = 5.437500
+rho = errorV(Ncycles)/error0 = 0.003814
+rho = rho^(1/Ncycles)=0.156235

@@ -1,0 +1,34 @@
+function conv = cnvtem_outer(x,low,up,sfun);
+
+global upper lower
+%--------------------------------------------------------------------
+%outer convergence test for barried method
+%--------------------------------------------------------------------
+[f, g, F, G] = feval (sfun, x);
+if(upper)
+lambda=zeros(size(x));
+ind=find(upper-x<=1);
+lambda(ind)=-g(ind);
+y=max(lambda.(up-x));
+DL=g+lambda;
+elseif(lower)
+    lambda=zeros(size(x));
+ind=find(x-low<=1);
+lambda(ind)=g(ind);
+    y=max(lambda.(x-low));
+    DL=g-lambda;
+else
+    lambda1=zeros(size(g));
+    lambda2=zeros(size(g));
+    ind1=find(x-low<=1);
+    lambda1(ind1)=g(ind1);
+    ind2=find(up-x<=1);
+    lambda2(ind2)=-g(ind2);
+    y=max([lambda1.*(x-low);lambda2.*(up-x)]);
+    DL=g-lambda
+end
+
+
+
+
+

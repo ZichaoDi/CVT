@@ -1,0 +1,23 @@
+function global_setup (n,v0)
+%----------------------------------------------------------------------
+% Perform "global" computations for optimization at a
+% specified discretization (corresponding to n)
+%----------------------------------------------------------------------
+%global  IHh1 IHh2  IHh3 IHh4 IHh5 IHh6 IhH1 IhH2 IhH3 IhH4 IhH5 IhH6  IHh7 IhH7 IHh8 IhH8 IHh9 IhH9 IHh10 IhH10 IHh11 IhH11 
+global  N minx maxx bdr bdl 
+global CIHh CIhH
+nn=length(v0);
+v0=sort(v0);%
+bdl=v0(1)-2*(v0(1)-minx);
+bdr=2*(maxx-v0(end))+v0(end);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a=1/4;b=1/2;
+% ind=find(nn==N);
+% B=restric_residule(n);
+% B=B';
+% CIHh{ind}=[b*B];
+% CIhH{ind}=[a*restric_residule(n)];
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[B]=coarsen_1d(v0);
+CIHh{ind}=[b*B];
+

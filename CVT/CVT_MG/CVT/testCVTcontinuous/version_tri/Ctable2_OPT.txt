@@ -1,0 +1,35 @@
+size           cycle_number               time                    convergence factor               energy                        ||g||
+  55              10                      2.75                    0.009287                        41764.34239                     0.00009318
+ 253              12                     11.36                    0.009287                        10441.08560                     0.00006448
+1081              21                     84.7813                  0.311411                        2610.27140                      0.0000028
+
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+4465              14                    7313.00                                            652.56785                     0.00001742
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||
+  10               8                      2.94                    0.072431                        167057.36956                     0.00028324
+  55              10                     18.83                    0.113911                        41764.34239                     0.00008301
+ 253              11                    115.64                    0.169839                        10440.17925                     0.00010014
+1081              12                    853.80                    0.204867                        2610.21475                     0.00003081
+4465              15                    8104.5781                 0.299694                        6.52564309e+002                9.4e-007size           cycle_number               time                    convergence factor               energy                        ||g||
+ 253              11                    112.31                    0.169839                        10440.17925                     0.00010014
+1081              12                    837.28                    0.204867                        2610.21475                     0.00003081
+size           cycle_number               time                    convergence factor               energy                        ||g||
+size           cycle_number               time                    convergence factor               energy                        ||g||

@@ -1,0 +1,343 @@
+function zzz = voronSeidelWtest
+
+format long;
+t0=clock;
+%N = input('Input the number of generators');
+N=9;
+fid = fopen('data9.txt');
+Ninit = N;
+%eps = input('Input eps=approximation parameter');
+eps = 1e-10;
+epsilon=0.01;
+param = 0.01;
+Nsample=0;
+NGridStep = 4; %number of grid levels in each cycle
+Ncycles = 10;  %number of V-cycles
+mu1 = 1; %number of pre-relaxations
+mu2 = 1; %number of post-relaxations 
+mu0 = 1; %number of W-relaxations 
+nu = 0; %number of relaxations on coarsest level
+coarse = 1; %is exact solve used? 1 if yes
+window = 0.01;
+pictures = 0;
+RelaxV = 2*(mu1+mu2)*(1-0.5^(NGridStep-1)) + (1 + ceil(mu0/(mu0 + 1)))*0.5^(NGridStep) + mu0*0.5^(NGridStep-1); 
+RelaxTotal = RelaxV*Ncycles
+
+pp=0;
+
+stt = 1/Ncycles;
+Jacobian = jacs(N,NGridStep);
+errorV = zeros(Ncycles,1);
+error = zeros(Ncycles,1);
+engy = zeros(2,1);
+errAll = zeros(2,1);
+error0=0;
+errorLast = error0;
+p = N;
+
+%------------------------------------------------
+% Multigrid cycle begins
+%------------------------------------------------
+for outer=1:Ncycles
+
+for ss=NGridStep:-1:2 %------------------------------------------------begin coarsening the grid
+   
+if (outer==1)&&(ss==NGridStep) %first outer loop iteration => random initialization   
+ data = zeros(N,1); 
+ dataExact = zeros(N,1);
+ 
+ data = fscanf(fid,'%f');
+ 
+ for k=1:N
+     %data(k)=initialize(x);
+     %data(k)=(2*k-1)/(2*N);     
+     dataExact(k)=(2*k-1)/(2*N);
+ end   
+ % data=sort(data)
+ data;
+ fprintf('Initial error:'); 
+ data-dataExact;
+ dataFirst = data;
+ error0 = norm(data-dataExact)/sqrt(N);
+ errorLast = error0;
+ 
+ Nsample;
+ save initial.dat data -ascii;
+end %other iterations => initial guess given by coarsening previous iteration
+
+errRelax = zeros(mu1,1);
+if (ss==NGridStep)  
+ p = N;
+end
+
+Jac = zeros(p,N);
+Jac = Jacobian(1:p,1:N,ss);    
+
+fprintf('Begin coarsening relaxations\n');
+for ttt=1:mu1 %--------------------------------------relaxation
+    
+data = double(partRelaxNosymGraphs(data,Jac,NGridStep-ss));
+
+if (norm(data)<=eps) 
+    data
+    fprintf('Problem encountered during relaxation at level %d step %d',ss,ttt);
+    return;    
+end
+
+pp=pp+1
+engy(pp)=double(energy(data));
+errAll(pp) = norm(data - dataExact)/sqrt(N);
+
+if (outer==1)&&(ss==NGridStep)
+    %error0 = norm(data - dataFirst)/sqrt(N);
+end    
+end  % ------------------------------------------end relaxation  
+
+
+err = data - dataExact;
+nnorm = ones(N,1)*norm(err)/sqrt(N);
+errRelax(ttt) = norm(data - dataExact)/sqrt(N);
+fftRelax = fft(data-dataExact);
+norma = ones(N,1)*norm(fftRelax)/sqrt(N);
+
+if (pictures==1)
+figure(100);
+subplot(NGridStep-1,2,2*(NGridStep-ss)+1);
+axis([1 N -window window]);
+hold on;
+grid on;
+c = [outer*stt; 1-outer*stt; outer*stt]; 
+% plot(1:N,fftRelax(1:N),'.-','color',c);
+% plot(1:N,norma(1:N),'-','color',c);
+plot(1:N,err(1:N),'.-','color',c);
+plot(1:N,nnorm(1:N),':','color',c);
+drawnow;
+end
+
+p = (p+1)/2;
+
+end %-----------------------------------------------------------------------end coarsening 
+
+Jac = zeros(p,N); 
+Jac(1:p,1:N) = Jacobian(1:p,1:N,1);
+%!!!!!!!!! coarsest grid solve!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+if (coarse==1)
+ skip = 2^(NGridStep-1);
+
+ for i=1:p
+ ind = 1+(i-1)*skip
+ epss = data(ind)-dataExact(ind)
+ T = data;
+ data = data - epss*Jac(i,:)'
+ end
+
+end
+
+for i=1:nu
+ rel=i   
+ T = data;
+ data  = double(partRelaxNosymGraphs(data,Jac,NGridStep-1)); 
+ if (norm(data)<=eps) 
+    data
+    fprintf('Problem encountered during relaxation at coarsest level step %d',i);
+    return;   
+ end
+
+end
+pp=pp+1;
+engy(pp) = double(energy(data));
+errAll(pp) = norm(data-dataExact)/sqrt(N);
+errorPred = errorLast;
+errorLast = norm(data-T)/sqrt(N);
+
+if (mu0>0)
+%--------------W-cycle sweep---------------------------------
+
+p1 = 2*p-1;
+Jac = zeros(p1,N);
+Jac(1:p1,1:N) = Jacobian(1:p1,1:N,2);
+%data = data';
+Jac;
+for i=1:mu0
+ data = double(partRelaxNosymGraphs(data,Jac,NGridStep-2));
+ 
+ if (norm(data)<=eps) 
+    data
+    fprintf('Problem encountered during W-part step %d',i);
+    return;    
+ end
+
+ pp=pp+1
+ engy(pp) = double(energy(data));
+ errAll(pp) = norm(data-dataExact)/sqrt(N);
+end
+
+%-------------end W-cycle sweep, back to coarsest grid solve
+Jac = zeros(p,N);
+Jac(1:p,1:N) = Jacobian(1:p,1:N,1);
+T = data;
+for i=1:nu
+ rel=i   
+ data  = double(partRelaxNosymGraphs(data,Jac,NGridStep-1)); 
+ 
+ if (norm(data)<=eps) 
+    data
+    fprintf('Problem encountered during relaxation at end of W-part step %d',i);
+    return;    
+ end
+
+end
+pp=pp+1;
+engy(pp) = double(energy(data));
+errAll(pp) = norm(data-dataExact)/sqrt(N);
+%-----------------------------------------------------------
+errorPred = errorLast;
+errorLast = norm(data-T)/sqrt(N);
+end
+
+for ss=2:NGridStep % ---------------------------------------------begin refining the grid
+    
+pold = p;    
+p = 2*p-1;
+
+error=zeros(1,1);
+
+Jac = zeros(p,N);
+Jac(1:p,1:N) = Jacobian(1:p,1:N,ss);
+Jac;
+
+errRelax = zeros(mu2,1);
+fftRelax = zeros(mu2,1);
+
+fprintf('Begin refining relaxations\n');
+%-------------------------------------------------
+% Cycle begins
+%-------------------------------------------------
+for step=1:mu2   %relaxations
+
+T = data;
+data = double(partRelaxNosymGraphs(data,Jac,NGridStep-ss));
+
+if (norm(data)<=eps) 
+    data
+    fprintf('Problem encountered during relaxation at level %d step %d',ss,step);
+    return;    
+end
+
+pp=pp+1
+engy(pp) = double(energy(data));
+errAll(pp) = norm(data-dataExact)/sqrt(N);
+
+errorPred = errorLast;
+errorLast = norm(data-T)/sqrt(N);
+
+
+errRelax(step) = norm(data-dataExact)/sqrt(N);
+err = data-dataExact;
+nnorm = ones(N,1)*errRelax(step);
+fftRelax = fft(data-dataExact);
+norma = ones(N,1)*norm(fftRelax)/sqrt(N);
+
+end %---------------------------------------------for cycle
+t1=etime(clock,t0);
+
+if (pictures==1)
+figure(100);
+subplot(NGridStep-1,2,2*(NGridStep-ss) + 2);
+axis([1 N -window window]);
+hold on;
+grid on;
+c = [outer*stt; 1-outer*stt; outer*stt];
+% plot(1:N,fftRelax(1:N),'.-','color',c);
+% plot(1:N,norma(1:N),'-','color',c);
+plot(1:N,err(1:N),'.-','color',c);
+plot(1:N,nnorm(1:N),':','color',c);
+drawnow;
+end
+
+if (pictures==1)
+if (ss==NGridStep)
+figure(10);
+axis([1 N -0.1*window 0.1*window]);
+hold on;
+grid on;
+c = [outer*stt; 1-outer*stt; outer*stt];
+%plot(1:N,fftRelax(1:N),'.-','color',c);
+plot(1:N,err(1:N),'.-','color',c);
+plot(1:N,nnorm(1:N),'-','color',c);
+end
+end
+ 
+end %----------------------------------------------------------end refinement
+
+errorV(outer) = errAll(pp);
+error = abs(log(errorV));
+if (outer>1) 
+    convergenceV(outer)=error(outer)/error(outer-1); 
+end
+
+errorV
+
+if (pictures==1)
+figure(200);
+subplot(1,2,1);
+axis;
+hold on;
+grid on;
+title('||log(errorV_{new})/log(errorV_{old})||');
+if (outer>2)
+plot([outer-1,outer],[convergenceV(outer-1),convergenceV(outer)],'b.-');
+end
+
+subplot(1,2,2);
+axis;
+hold on;
+grid on;
+title('||errorV||');
+   if (outer>1)
+   plot([outer-1,outer],[errorV(outer-1),errorV(outer)],'r.-');
+   else
+   plot([0,1],[error0,errorV(1)],'r.-');    
+   end    
+drawnow;
+end
+
+rho = errorLast/errorPred
+fout = fopen('rhoPart2.txt','a');
+fprintf(fout,'%d  %2.18f\n',N,rho);
+fclose(fout);
+     
+end %----------------------------------------------------------end V-cycle
+
+% convergenceV'
+ engy
+ errAll
+ errorV
+ error0
+RelaxTotal
+rho = errorV(Ncycles)/error0
+rho = rho^(1/Ncycles)
+%rho = rho^(1/RelaxTotal)
+
+sz = size(engy,1);
+figure(500);
+hold on;
+grid on;
+ylabel('energy');
+plot(1:sz,engy,'r.-');
+
+sz = size(errAll,1);
+figure(600);
+hold on;
+grid on;
+ylabel('error');
+plot(1:sz,errAll,'r.-');
+ 
+% errorLast=errAll(sz)
+% errorPred=errAll(sz-1)
+% rho = errorLast/errorPred
+
+     fout = fopen('rhoPartV.txt','a');
+     fprintf(fout,'%d  %2.18f\n',N,rho);
+     fclose(fout);

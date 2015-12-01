@@ -1,0 +1,132 @@
+5  2.350849065180278300
+5  10.391547259005675000
+5  47.578125132396202000
+5  4.432577060653475300
+5  9.725198493015485100
+5  6.437663354808945500
+5  7.473422773369994100
+5  7.010898740807767200
+5  7.192862080245513200
+5  7.116544749079374700
+5  7.148338528503902700
+# cycles taken = 11
+engy = 0.003858
+engy = 0.003825
+engy = 0.003403
+engy = 0.003343
+engy = 0.003343
+engy = 0.003335
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+errAll = 0.036822
+errAll = 0.031523
+errAll = 0.012397
+errAll = 0.004215
+errAll = 0.004344
+errAll = 0.001831
+errAll = 0.000367
+errAll = 0.000369
+errAll = 0.000151
+errAll = 0.000035
+errAll = 0.000032
+errAll = 0.000013
+errAll = 0.000003
+errAll = 0.000003
+errAll = 0.000001
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errorV = 0.012397
+errorV = 0.001831
+errorV = 0.000151
+errorV = 0.000013
+errorV = 0.000001
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+errorV = 0.000000
+error0= 0.123057
+RelaxTotal = 81.250000
+rho = errorV(Ncycles)/error0 = 0.000000
+rho = rho^(1/Ncycles)=0.000000

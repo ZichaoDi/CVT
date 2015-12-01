@@ -1,0 +1,56 @@
+constrained problem with Uniformly distributed pseudorandom numbers as initial guess
+
+
+opt
+  it     nf     cg           f             |g|
+   0      1      0    1.67628860e+005   3.2e-004
+   1      2      2    1.67566014e+005   6.7e-006
+convergence rate=1.000000
+Time elapsed: 17.3281 sec
+
+-------------------------
+Optimization costs per grid
+-------------------------
+N:        519   259   129
+-------------------------
+NF(it):     1     0     0
+NF(nf):     2     0     0
+NF(cg):     2     0     0
+-------------------------
+
+mg
+In  mgrid: n = 519
+  it     nf     cg           f           |g|
+   0      1      0    1.67628898e+005   3.2e-004
+   1      2      2    1.67566011e+005   6.7e-006
+In  mgrid: n = 259
+  it     nf     cg           f           |g|
+   0      1      0    4.17618713e+004   5.9e-006
+In  mgrid: n = 129
+  it     nf     cg           f           |g|
+   0      1      0    1.03758366e+004   5.1e-006
+Error in Line Search (lmqnbcm.m)
+    ncg1   = 2
+    alpha  =     0.000000
+    alpha0 =     0.001008
+    g'p    = -1.0623e-003
+    |g|     =  3.2916e-004
+    |p|     =  3.2274e+000
+No descent direction: no step taken
+In  mgrid: n = 259
+  it     nf     cg           f           |g|
+   0      1      0    4.17618713e+004   5.9e-006
+No descent direction: no step taken
+In  mgrid: n = 519
+  it     nf     cg           f           |g|
+   0      1      0    1.67566011e+005   6.7e-006
+
+-------------------------
+Optimization costs per grid
+-------------------------
+N:        519   259   129
+-------------------------
+NF(it):     1     0     0
+NF(nf):     3     2     1
+NF(cg):     2     0     2
+-------------------------

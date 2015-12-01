@@ -1,0 +1,5 @@
+In 1-d CVT , it is necessary to sort variable in 
+-'lin' search 
+-'sfun_mg' 
+-'stpmax'
+which not need to do in 2-D.

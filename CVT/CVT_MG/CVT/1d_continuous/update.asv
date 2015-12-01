@@ -1,0 +1,61 @@
+function zh = update (zH,res_prob)
+global    CIHh N  bdr bdl minx maxx updating %IHh1 IHh2  IHh3  IHh4 IHh5 IHh6 IHh7 IHh8 IHh9 IHh10 IHh11
+n=length(zH);
+ind=find(n==N);
+nn=N(ind-1);
+% if (n==N(2))
+%     IHh=IHh1;
+% elseif(n==N(3))
+%     IHh=IHh2;
+% elseif(n==N(4))
+%     IHh=IHh3;
+%     elseif(n==N(5))
+%     IHh=IHh4;
+%     elseif(n==N(6))
+%     IHh=IHh5;
+%     elseif(n==N(7))
+%     IHh=IHh6;
+%     elseif(n==N(8))
+%     IHh=IHh7;
+%     elseif(n==N(9))
+%     IHh=IHh8;
+%     elseif(n==N(10))
+%     IHh=IHh9;
+%     elseif(n==N(11))
+%     IHh=IHh10;
+%     elseif(n==N(12))
+%     IHh=IHh11;
+% end
+IHh=cell2mat(CIHh(ind-1));
+
+
+
+if (mod(nn,2)==0)
+    if(updating)
+        bdl=2*minx-zH(1);
+        bdr=2*maxx-zH(end);
+        if(res_prob==4)
+            zhh=[bdl;zH];
+        else
+            zhh=[-zH(1);zH];
+        end
+    else
+        bdr=1;
+        bdl=0;
+        if(res_prob==4)
+            zhh=[bdl;zH;bdr];
+        else
+            zhh=[-zH(1);zH;-zH(end)];
+        end
+    end
+    zh=IHh*zhh;
+zh=IHh*zH;
+elseif (mod(nn,2)~=0)
+    if(res_prob==4)
+        zhh=[bdl;zH;bdr];
+    else
+        zhh=[-zH(1); zH;-zH(end)];
+    end
+    zh=IHh*zhh;
+end
+

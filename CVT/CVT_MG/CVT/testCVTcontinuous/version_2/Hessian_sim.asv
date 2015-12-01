@@ -1,0 +1,12 @@
+function H= Hessian_sim (x)
+n=length(x);
+[f,g]=sfun(x);H=zeros(n,n);delta=1e-7;
+for i=1:n
+    v=0*x;
+    v(i)=1;
+    hg      = x + delta*v;
+    [f, gv] = sfun(hg);
+    gv      = (gv - g)/delta;
+    H(:,i)=gv;
+end
+H=(H+H')/2;

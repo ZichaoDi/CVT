@@ -1,0 +1,28 @@
+function zH = downdate (zh,res_prob)
+global current_n IhH1 IhH2  IhH3  IhH4 hH N
+
+m2=length(zh);
+n=m2/2;
+zh=reshape(zh,2,n);
+if(res_prob==3)
+   [zH,bond,B0,B,globalind] = coarsen2_mlevel(zh,zh);
+else
+in=find(n==N);
+IhH=cell2mat(hH();
+zH=zh*IhH;
+
+% if(current_n==N(1))
+%     zH=zh*IhH4;
+% elseif(current_n==N(2))
+%     zH=zh*IhH3;
+% elseif(current_n==N(3))
+%     zH=zh*IhH2;
+% elseif(current_n==N(4))
+%     zH=zh*IhH1;
+% 
+% end
+end
+m1=size(zH,2);
+zH=reshape(zH,2*m1,1);
+
+

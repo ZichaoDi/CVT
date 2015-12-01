@@ -1,0 +1,19 @@
+function vH = downdate_variable (vh, res_prob)
+
+%-----------------------------------------
+% Downdate to a smaller problem.
+%
+
+global X  N current_n
+
+%--------------------------------------------------------------
+
+j  = find(N==current_n);
+vH(1)=vh(1)+1/2*vh(2);
+vH(N(j+1))=vh(end-1)/2+vh(end);
+for i=2:N(j+1)-1
+    vH(i)=vh(2*i-2)/2+vh(2*i-1)+vh(2*i)/2;
+end
+vH=vH';
+return
+

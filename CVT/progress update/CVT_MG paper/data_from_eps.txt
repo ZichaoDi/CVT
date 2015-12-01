@@ -1,0 +1,20 @@
+Data for lower graph in history1.eps (rho=1):
+
+N    factor  
+------------- 
+9    0.2949
+17    0.2298
+33    0.2049
+65    0.1333
+129    0.1109
+
+
+Data for lower graph in history2.eps (rho=1+0.1x - caption is wrong):
+
+N 	factor
+------------------
+9    0.2945
+17    0.2400
+33    0.2078
+65    0.1815
+129    0.1133

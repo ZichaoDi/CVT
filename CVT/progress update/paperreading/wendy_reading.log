@@ -1,0 +1,43 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdftex 2010.9.30)  1 FEB 2012 13:39
+entering extended mode
+**C:/MatlabR2009a/work/SVNrep/WENDY/sub_WENDY/progress*update/paperreading/wend
+y_reading.bib
+
+("C:/MatlabR2009a/work/SVNrep/WENDY/sub_WENDY/progress update/paperreading/wend
+y_reading.bib"
+Overfull \hbox (2.27383pt too wide) in paragraph at lines 35--41
+\tenrm mooth New-ton meth-ods ap-plied to op-ti-miza-tion prob-lems con-straine
+d by smooth-ing op-er-a-tors", year="2011",|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\tenrm m
+.\tenrm o
+.\kern0.27779
+.\tenrm o
+.\tenrm t
+.etc.
+
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no Ÿ in font cmr10!
+[1{C:/Documents and Settings/All Users/Application Data/MiKTeX/2.8/pdftex/confi
+g/pdftex.map}]
+Missing character: There is no Î in font cmr10!
+Missing character: There is no ² in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¼ in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¤ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no “ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+)
+*
+! Emergency stop.
+<*> ...gress*update/paperreading/wendy_reading.bib
+                                                  
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

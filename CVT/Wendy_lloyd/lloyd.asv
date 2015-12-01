@@ -1,0 +1,25 @@
+%Lloyd's method on unit interval of 1-dimension
+%density function r(x)=1
+
+m=7;
+x = sort(rand(1,m))
+
+for i=1:m
+ xex(i) = (2*i-1)/(2*m);
+
+end
+
+for n=1:1000
+    x(1)=(x(1)+x(2))/4;
+    for i=2:m-1
+        x(i)=(x(i-1)+2*x(i)+x(i+1))/4;
+    end
+    x(m)=(x(m-1)+x(m)+2)/4
+
+    error(n) = norm(x-xex);
+    if error(n)<10^-6
+        break
+    end
+end 
+
+% plot(error)

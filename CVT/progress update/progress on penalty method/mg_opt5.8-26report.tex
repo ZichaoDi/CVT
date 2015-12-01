@@ -1,0 +1,34 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{epsfig}
+\usepackage{color}
+\include{wendy_macros}
+\title{\ Progress Report on penalty method}
+\author{Zichao Di}
+\date{\today}
+\begin{document}
+  \maketitle 
+
+\begin{itemize}
+\item Referring to \cite{NA}, I implemented this barrier method on 1d-Linear control problem with bound constraints. So far, I didn't consider the ill conditioning of the Hessian yet, for the other part, just following the instructions on Matrix-Vector Products, Stopping criteria and the line search.
+\item After the implementation works, I applied extrapolation to accelerate the convergence. Unexpectedly, it didn't improve the performance, but instead, the convergence is slowed a lot with extrapolation. 
+
+\end{itemize}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{NA}
+  Stephen Nash and Ariela Sofer , 
+  \emph{A Barrier Method for Large-Scale Constrained Optimization}.
+ORSA Journal on Computing,
+Vol 5,
+No 1,
+1993
+\end{thebibliography}
+
+\end{document}
+

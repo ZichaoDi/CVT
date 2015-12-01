@@ -1,0 +1,203 @@
+\begin{thebibliography}{10}
+
+\bibitem{au90}
+{\sc F.~Aurenhammer}, {\em Voronoi diagrams. a survey of a fundamental
+  geometric data structure}, ACM Computing Surveys, 23 (1990), pp.~345--405.
+
+\bibitem{Cortes}
+{\sc J.~Cortes, S.~Martinez, T.~Karata, and F.~Bullo}, {\em Coverage control
+  for mobile sensing networks}, IEEE Transactions on Robotics and Automation,
+  20 (2004), pp.~243--255.
+
+\bibitem{DE06}
+{\sc Q.~Du and M.~Emelianenko}, {\em Acceleration of algorithms for the
+  computation of centroidal {V}oronoi tessellations}, Numerical Linear Algebra
+  and its Applications, 13 (2006), pp.~173--192.
+
+\bibitem{DE07}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Uniform convergence
+  of a multilevel energy-based quantization scheme}, in Lecture Notes in
+  Computer Science and Engineering, O.~B. Widlund and D.~E. Keyes, eds.,
+  vol.~55, Springer, Berlin, 2007, pp.~533--541.
+
+\bibitem{DE08}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Uniform convergence
+  of a nonlinear energy-based multilevel quantization scheme via centroidal
+  {V}oronoi tessellations}, SIAM Journal on Numerical Analysis, 46 (2008),
+  pp.~1483--1502.
+
+\bibitem{DEJ}
+{\sc Q.~Du, M.~Emelianenko, and L.~Ju}, {\em Convergence properties of the
+  {L}loyd algorithm for computing the centroidal {V}oronoi tessellations}, SIAM
+  Journal on Numerical Analysis, 44 (2006), pp.~102--119.
+
+\bibitem{DFG}
+{\sc Q.~Du, V.~Faber, and M.~Gunzburger}, {\em Centroidal {V}oronoi
+  tessellations: applications and algorithms}, SIAM Review, 41 (1999),
+  pp.~637--676.
+
+\bibitem{DG02}
+{\sc Q.~Du and M.~Gunzburger}, {\em Grid generation and optimization based on
+  centroidal {V}oronoi tessellations}, Applied Mathematics and Computation, 133
+  (2002), pp.~591--607.
+
+\bibitem{DGJ02}
+{\sc Q.~Du, M.~Gunzburger, and L.~Ju}, {\em Meshfree probabilistic
+  determination of points, support spheres, and connectivities for meshless
+  computing}, Computational Methods in Applied Mechanics and Engineering, 191
+  (2002), pp.~1349--1366.
+
+\bibitem{DGJ03}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Constrained
+  centroidal {V}oronoi tessellations on general surfaces}, SIAM Journal on
+  Scientific Computing, 24 (2003), pp.~1488--1506.
+
+\bibitem{DW1}
+{\sc Q.~Du and D.~Wang}, {\em Tetrahedral mesh generation and optimization
+  based on centroidal {V}oronoi tessellations}, International Journal for
+  Numerical Methods in Engineering, 56 (2002), pp.~1355--1373.
+
+\bibitem{DW3}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Recent progress in
+  robust and quality {D}elaunay mesh generation}, Journal of Computational and
+  Applied Mathematics, 195 (2006), pp.~8--23.
+
+\bibitem{dwyer}
+{\sc R.~Dwyer}, {\em Higher-dimensional {V}oronoi diagrams in linear expected
+  time}, Discrete and Computational Geometry, 6 (1991), pp.~343--367.
+
+\bibitem{E10}
+{\sc M.~Emelianenko}, {\em Fast multilevel {CVT}-based adaptive data
+  visualization algorithm}, Numerical Mathematics: Theory, Methods and
+  Applications, 3 (2010), pp.~195--211.
+
+\bibitem{EJR}
+{\sc M.~Emelianenko, L.~Ju, and A.~Rand}, {\em Weak global convergence of the
+  {L}loyd method for computing centroidal {V}oronoi tessellations in ${R}^d$},
+  SIAM Journal on Numerical Analysis, 46 (2008), pp.~1423--1441.
+
+\bibitem{for87}
+{\sc S.~Fortune}, {\em A sweepline algorithm for {V}oronoi diagrams},
+  Algorithmica, 2 (1987), pp.~153--174.
+
+\bibitem{Gersho}
+{\sc A.~Gersho}, {\em Asymptotically optimal block quantization}, IEEE
+  Transactions on Information Theory, 25 (1979), pp.~373--380.
+
+\bibitem{Gray98}
+{\sc R.~Gray and D.~Neuhoff}, {\em Quantization}, IEEE Transactions on
+  Information Theory, 44 (1998), pp.~2325--2383.
+
+\bibitem{GrNaSo08a}
+{\sc I.~Griva, S.~G. Nash, and A.~Sofer}, {\em Linear and Nonlinear
+  Optimization}, SIAM, Philadelphia, 2008.
+
+\bibitem{Hiller03}
+{\sc S.~Hiller, H.~Hellwig, and O.~Deussen}, {\em Beyond stippling methods for
+  distributing objects on the plane}, Computer Graphics Forum, 22 (2003),
+  pp.~515--522.
+
+\bibitem{JDG02}
+{\sc L.~Ju, Q.~Du, and M.~Gunzburger}, {\em Probabilistic methods for
+  centroidal {V}oronoi tessellations and their parallel implementations},
+  Parallel Computing, 28 (2002), pp.~1477--1500.
+
+\bibitem{yavneh06}
+{\sc Y.~Koren and I.~Yavneh}, {\em Adaptive multiscale redistribution for
+  vector quantization}, SIAM Journal on Scientific Computing, 27 (2006),
+  pp.~1573--1593.
+
+\bibitem{yavneh03}
+{\sc Y.~Koren, I.~Yavneh, and A.~Spira}, {\em A multigrid approach to the 1-{D}
+  quantization problem}, tech. report, 2003.
+
+\bibitem{Levy10}
+{\sc B.~L\'{e}vy and Y.~Liu}, {\em ${L}_p$ centroidal {V}oronoi tessellation
+  and its applications}, in ACM Transactions on Graphics, SIGGRAPH conference
+  proceedings, vol.~24, 2010.
+\newblock Article 119.
+
+\bibitem{LeNa05a}
+{\sc R.~M. Lewis and S.~G. Nash}, {\em Model problems for the multigrid
+  optimization of systems governed by differential equations}, SIAM Journal on
+  Scientific Computing, 26 (2005), pp.~1811--1837.
+
+\bibitem{LBG}
+{\sc Y.~Linde, A.~Buzo, and R.~Gray}, {\em An algorithm for vector quantizer
+  design}, IEEE Transactions on Communications, 28 (1980), pp.~84--95.
+
+\bibitem{Lloyd}
+{\sc S.~Lloyd}, {\em Least square quantization in {PCM}}, IEEE Transactions on
+  Information Theory, 28 (1982), pp.~129--137.
+
+\bibitem{McCo92a}
+{\sc S.~F. {McCormick}}, {\em Multilevel Projection Methods for Partial
+  Differential Equations}, Society for Industrial and Applied Mathematics,
+  1992.
+
+\bibitem{Mendes04}
+{\sc A.~Mendes and I.~Themido}, {\em Multi-outlet retail site location
+  assessment}, International Transactions in Operational Research, 11 (2004),
+  pp.~1--18.
+
+\bibitem{Nash84sw}
+{\sc S.~G. Nash}, {\em {TN}/{TNBC} software}.
+\newblock {\tt http://www-fp.mcs.anl.gov/OTC/Guide/SoftwareGuide/
+  Blurbs/tn\_tnbc.html}.
+
+\bibitem{Nash00a}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em A multigrid approach
+  to discretized optimization problems}, Journal of Computational and Applied
+  Mathematics, 14 (2000), pp.~99--116.
+
+\bibitem{Nash10a}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Convergence and
+  descent properties for a class of multilevel optimization algorithms}, tech.
+  report, Systems Engineering and Operations Research Department, George Mason
+  University, Fairfax, VA, 2010.
+
+\bibitem{NaNo91a}
+{\sc S.~G. Nash and J.~Nocedal}, {\em A numerical study of the limited memory
+  {BFGS} method and the truncated-{Newton} method for large scale
+  optimization}, 1 (1991), pp.~358--372.
+
+\bibitem{Okabe}
+{\sc A.~Okabe, B.~Boots, and K.~Sugihara}, {\em Spatial Tessellations; Concepts
+  and Applications of {V}oronoi Diagrams}, Wiley, Chichester, 1992.
+
+\bibitem{Levy10_1}
+{\sc G.~Rong, Y.~Liu, W.~Wang, X.~Yin, X.~D. Gu, and X.~Guo}, {\em
+  {GPU}-assisted computation of centroidal {V}oronoi tessellation}, IEEE
+  Transactions on Visualization and Computer Graphics, 16 (2010).
+\newblock to appear.
+
+\bibitem{Gray86}
+{\sc J.~Sabin and R.~Gray}, {\em Global convergence and empirical consistency
+  of the generalized {L}loyd algorithm}, IEEE Transactions on Information
+  Theory, IT--32 (1986), pp.~148--155.
+
+\bibitem{Trushkin}
+{\sc A.~Trushkin}, {\em On the design of an optimal quantizer}, IEEE
+  Transactions on Information Theory, 39 (1993), pp.~1180--1194.
+
+\bibitem{trotten}
+{\sc U.Trottenberg, C.W.Oosterlee, and A.Schuller}, {\em Multigrid},  (2001),
+  pp.~61--62.
+
+\bibitem{Mesh04}
+{\sc S.~Valette and J.~Chassery}, {\em Approximated centroidal {V}oronoi
+  diagrams for uniform polygonal mesh coarsening}, Computer Graphics Forum, 23
+  (2004), pp.~381--390.
+
+\bibitem{LNCS08}
+{\sc C.~N. Vasconcelos, A.~S\'{a}, P.~C. Carvalho, and M.~Gattass}, {\em
+  Lloyd's algorithm on gpu}, in ISVC '08: Proceedings of the 4th International
+  Symposium on Advances in Visual Computing, Berlin, Heidelberg, 2008,
+  Springer-Verlag, pp.~953--964.
+
+\bibitem{Brain04}
+{\sc C.~Wager, B.~Coull, and N.~Lange}, {\em Modelling spatial intensity for
+  replicated inhomogeneous point patterns in brain imaging}, Journal of Royal
+  Statistical Society B.
+
+\end{thebibliography}

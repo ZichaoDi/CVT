@@ -1,0 +1,232 @@
+function new = relaxation(varargin)
+global time0;
+global A layers dataExact ss total div outer towhich;
+
+
+args = size(varargin,2);
+if (args==4)
+    data = varargin{1};
+    level = varargin{2};
+    dataTest = varargin{3};
+    struct =  varargin{4};
+    Ntest = size(dataTest,1);
+else
+    data = varargin{1};
+    level = varargin{2};    
+end    
+
+N = size(data,1);
+level
+
+jj=1;
+
+for ind=1:N
+   
+    if (args==2)&(isbdry(data(ind,1),data(ind,2)))
+        coarse(jj) =  ind;
+        jj = jj+1;        
+    elseif (args>2)     
+    for j=1:Ntest
+        pt = zeros(1,2);
+        pt(1:2) = dataTest(j,1:2);
+        if (norm(pt-struct(ind,:))<eps)&(isbdry(data(ind,1),data(ind,2)))
+            pt;          
+            coarse(jj) = ind;
+            jj = jj+1;
+            break;
+        end    
+    end    
+    end 
+end
+
+Nsmall = size(coarse,2)
+towhich = regions(coarse,dataExact);
+
+for ii=1:Nsmall
+  nn=0;
+arrX=zeros(1);
+arrY = zeros(1);
+  
+    ind = coarse(ii);    
+    old = data;         
+    if (mod(ii,50)==0) fprintf('%d out of %d\n',ii,Nsmall); end
+    
+    
+    %disp('before fsolve');
+    etime(clock,time0);
+    
+    h = 1e-2;
+    x0 = [0,0];
+    options = optimset('display','none','MaxIter',5,'TolFun',1e-16);
+    %'TolCon',1e-16,'TolX',1e-6,'LargeScale','on');
+     
+    [alpha,fval,exitflag] = fsolve(@newEnergy,x0,options,data,layers,ind,level);
+    solX = alpha(1); solY = alpha(2);
+    
+    
+     %disp('after fsolve');
+     etime(clock,time0);
+      
+     
+     for pp=1:N
+      J = 0;    
+      if (pp==ind)
+       J=1;              
+      elseif (level>0)                    
+        if (towhich(pp)==ind)&(isbdry(data(pp,1),data(pp,2))) 
+         lay = layers(ind,pp);   
+         
+          if (ss==1)
+           J = max(1 - 2^(-total)*(lay-1),0); 
+           %J = max(1 - 2^(1-level)*(lay-1),0);
+          else
+           %J = max(1 - 2^(-total)*(lay-1),0);   
+           J = max(1 - 2^(1-level)*(lay-1),0);%/(2^(lay-1));                  
+          end  
+         end  
+         
+         
+       end
+       
+         %if (J>0)
+         nn=nn+1;
+         arrX(nn) = data(pp,1); arrY(nn)=data(pp,2);arrZ(nn)=J;
+         %end 
+      data(pp,:) = old(pp,:) + [J*solX,J*solY];
+ 
+  
+%  if (J>0)&(level>1)          
+%  cc = ind/N;
+%  color = [cc 1-cc 1-cc]; 
+%  hold on;
+%  plot3(data(pp,1),data(pp,2),J,'o','color',color); 
+%  %text(data(ii,1),data(ii,2),num2str(towhich(ii))); 
+%  %text(data(pp,1),data(pp,2),num2str(J)); 
+%  drawnow;
+%  end
+ 
+end
+     %if (level==2) fprintf('\n%2.16f\n',norm(data-dataExact)/sqrt(N)); end
+cc = [rand rand rand];   
+tri = zeros(1,3);
+% if (nn>0)&(level>1)  
+%     tri = delaunay(arrX,arrY);
+%     trimesh(tri,arrX,arrY,arrZ);
+%     hold on;
+%     drawnow;
+% end
+     
+end
+%end
+%end
+
+new = data;
+return;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function z = newEnergy(x,data0,layers,ind,level)
+global A ss total div towhich dataExact;
+x;
+
+time0 = clock;
+data = data0;
+N = size(data0,1);
+dEx = 0;
+dEy = 0;
+%Nsmall = size(X);
+marked = zeros(1,2);
+s=1;
+
+ind;
+for ii=1:N    
+ J = 0;    
+ if (ii==ind)
+     J=1;
+ elseif (level>0)  
+  if (towhich(ii)==ind)&(isbdry(data(ii,1),data(ii,2))) 
+      lay = layers(ind,ii);  
+      if (ss==1)
+       J = max(1 - 2^(-total)*(lay-1),0); 
+       %J = max(1 - 2^(1-level)*(lay-1),0);
+      else 
+       %J = max(1 - 2^(-total)*(lay-1),0);    
+       J = max(1 - 2^(1-level)*(lay-1),0);                  
+      end
+  end  
+ end
+ if (J>0) 
+   marked(s,1:2) = [ii,J]; s = s+1;
+   ii;J;
+   data(ii,:) = data0(ii,:) + [J*x(1),J*x(2)];
+ end
+
+end
+
+
+%time1 = etime(clock,time0)
+
+pts = zeros(1,2);
+
+size(marked);
+for pp=1:size(marked,1)
+        ii = marked(pp,1);
+        J = marked(pp,2);            
+         
+            
+        array = zeros(1);    
+        array = find(A(ii,:));
+        sz = size(array,2);
+        for i=1:sz             
+          if (ss==1) pts(i,1:2)=data(array(i),1:2);  
+          else
+              pts(i,1:2)=data(array(i),1:2);  
+          end    
+          if (array(i)==ii) index=i; end
+        end    
+        
+        centr = zeros(2,1);
+        pts(1:sz,1:2)
+        %drawvor(pts(1:sz,1:2),'k.');
+        [v,c]=voronoin(pts(1:sz,1:2));
+        hold on;
+        plot(pts(1:sz,1),pts(1:sz,1),'m*');
+        v
+        [centr,area] = centr2dTri(pts,v,c,index);
+        
+        dEx = dEx + 2*J*area*(data(ii,1) - centr(1));
+        dEy = dEy + 2*J*area*(data(ii,2) - centr(2));                          
+ 
+end
+    
+%time2 = etime(clock,time0)
+z  = [dEx,dEy];
+%z = dEx^2+dEy^2;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function layers = buildLayer(level,A,layers,data,ind0);
+warning off;
+old = data;
+N = size(data,1);
+
+%if (level>0) 
+    
+for ii=1:N               
+         index = layers(ind0,ii);
+         if (index==level)&(isbdry(data(ii,1),data(ii,2))) 
+           neighbor = A(ii,1:N);
+           places = find(neighbor);
+           for jj=1:size(places,2);
+             number = places(jj);  
+             if (layers(ind0,number)==0)&(isbdry(data(number,1),data(number,2)))  
+                 layers(ind0,number) = level+1;  
+             end
+           end         
+        end
+end  
+%end                 
+layers = sparse(layers);    
+return;
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

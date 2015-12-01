@@ -1,0 +1,27 @@
+function gv = mv_product 
+%%%%%%%%%%%%%%%%%##################
+global upper lower v_low v_up
+%%%%%%%%%%%%%%%%%##################
+%---------------------------------------------------------
+% compute the product of the Hessian times the vector v;
+% store result in the vector gv 
+% (finite-difference version)
+%---------------------------------------------------------
+%%%%%%%%%%%%%%%%%##################
+delta = sqrt(eps);
+hg      = x + delta*v;
+%%%%%%%%%%%%%%%%%##################
+f
+ind=1:length(x);
+gv      = (gv1 - gv)/delta;
+BG=zeros(size(x));
+if(upper&~lower)
+    BG(ind)=miu*v(ind)./(v_up(ind)-x(ind)).^2;
+elseif(lower&~upper)
+    BG(ind)=miu*v(ind)./(x(ind)-v_low(ind)).^2;
+else
+    BG(ind)=miu*(v(ind)./(x(ind)-v_low(ind)).^2+v(ind)./(v_up(ind)-x(ind)).^2);
+end
+gv      = gv+BG;
+
+%########################################################

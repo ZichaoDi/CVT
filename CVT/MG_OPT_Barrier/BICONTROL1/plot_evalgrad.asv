@@ -1,0 +1,72 @@
+function plot_evalgrad
+global nn fiter itertest giter;
+clf;
+load AFMIN63LU ;
+load fs1su63;
+fstar=fs1su63;
+AAA=AFMIN63LU ;
+fiter=AAA(:,4);itertest=AAA(:,2);%AAA(:,3)+
+% diary opt287
+% opt;
+% % % diary off
+% % % fs1s287=F;
+% % % save fs1s287 fs1s287;
+% % % v=vs1s287;
+% % % vs1s287 vs1s287;
+% % % save vs1s287 vs1s287;
+%fstar=F;
+error_opt=fiter-fstar;
+iter_opt=itertest;
+tt=2;mg_con; [f,g]=sfun(v);[f0,g0]=sfun(v0);fvmg(1)=f0;gvmg(1)=norm(g0,inf);iterg_con(1)=1;fvmg(2)=f;gvmg(2)=norm(g,inf); iterg_con(2)=0;
+for j=1:length(N)
+%iterg(2)=iterg(2)+sum(NF(2:3,j))/(2^(j-1));
+iterg_con(2)=iterg_con(2)+NF_con(j)/(2^(j-1));
+end
+while(tt<=10)
+    tt=tt+1;mgit_con;[f,g]=sfun(v);fvmg(tt)=f;gvmg(tt)=norm(g,inf);
+    iterg_con(tt)=0;
+    for j=1:length(N)
+        iterg_con(tt)=iterg_con(tt)+NF_con(j)/(2^(j-1));
+    end
+    if(norm(fvmg(tt)-fstar)<=1e-10);break;end
+end 
+error_mg_con=fvmg-fstar;
+
+%%------------------------------------------------------------------------
+%%%------------------------------------------------------------------------
+% %%%mg
+% tt=2;mg; [f,g]=sfun(v);[f0,g0]=sfun(v0);fvmg(1)=f0;
+% gvmg(1)=norm(g0,inf);iterg(1)=1;fvmg(2)=f;gvmg(2)=norm(g,inf); iterg(2)=0;
+% for j=1:length(N)
+% iterg(2)=iterg(2)+sum(NF(2:3,j))/(4^(j-1));
+% end
+% while(tt<=15)
+%     tt=tt+1;mgit;[f,g]=sfun(v);fvmg(tt)=f;gvmg(tt)=norm(g,inf);
+%     iterg(tt)=0;
+%     for j=1:length(N)
+%         iterg(tt)=iterg(tt)+sum(NF(2:3,j))/(4^(j-1));
+%     end
+%     if(fvmg(tt)-fstar<=1e-6);break;end
+% end 
+% error_mg=fvmg-fstar;
+
+% plot_graph = findobj('Tag', 'MG_fmin vs.OPT_fmin');
+% if (isempty(plot_graph))
+%  plot_graph = figure('Tag', 'MG_fmin vs.OPT_fmin', ...
+% 					  'IntegerHandle', 'off', ...
+% 					  'Name', 'MG_fmin vs.OPT_fmin', ...
+% 					  'Numbertitle', 'off', ...
+% 					  'Visible', 'off');
+% else
+%   figure(plot_graph);
+% end
+figure('Name','MG/OPT vs.OPT','NumberTitle','off');
+hold on;
+semilogy(iter_opt,error_opt,'r.-');text(iter_opt(2),error_opt(2),' \leftarrow OPT','FontSize',18);
+hold on;
+semilogy(iterg_con(1:end),error_mg_con(1:end),'g.-');text(iterg_con(end),error_mg_con(end),' \leftarrow MG-fmincon','FontSize',18);
+%semilogy(iterg,error_mg,'b.-');text(iterg(1),error_mg(1),' \leftarrow MG','FontSize',18);
+xlabel('fine level gradient evaluations');
+ylabel('error of objective function value');
+title({['performance of mg vs.opt: Linear Control'];['variable size:',int2str(N(1))];...
+    ['level discretization:',mat2str(N)];['MG\TN:smoothing iteration number:1\coarsest level smoothing iteration:25'];['MG\FMIN:smoothing iteration number:25\coarsest level smoothing iteration:50'];date});

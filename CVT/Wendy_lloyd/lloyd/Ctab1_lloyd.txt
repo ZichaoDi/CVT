@@ -1,0 +1,2 @@
+size           cycle_number               time                    convergence factor
+ 512            1311926                    5763.11                    0.999990

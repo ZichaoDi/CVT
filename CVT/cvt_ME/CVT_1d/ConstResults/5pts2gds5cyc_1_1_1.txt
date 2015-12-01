@@ -1,0 +1,64 @@
+5  Inf
+5  Inf
+5  Inf
+5  Inf
+5  Inf
+engy = 0.004003
+engy = 0.003356
+engy = 0.003337
+engy = 0.003337
+engy = 0.003334
+engy = 0.003334
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+engy = 0.003333
+errAll = 0.070852
+errAll = 0.006751
+errAll = 0.003844
+errAll = 0.003844
+errAll = 0.002650
+errAll = 0.001839
+errAll = 0.000283
+errAll = 0.000119
+errAll = 0.000119
+errAll = 0.000053
+errAll = 0.000034
+errAll = 0.000005
+errAll = 0.000002
+errAll = 0.000002
+errAll = 0.000001
+errAll = 0.000001
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errAll = 0.000000
+errorV = 0.002650
+errorV = 0.000053
+errorV = 0.000001
+errorV = 0.000000
+errorV = 0.000000
+error0= 0.123057
+RelaxTotal = 15.000000
+rho = errorV(Ncycles)/error0 = 0.000000
+rho = rho^(1/Ncycles)=0.018897

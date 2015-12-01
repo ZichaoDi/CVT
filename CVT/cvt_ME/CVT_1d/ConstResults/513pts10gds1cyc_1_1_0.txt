@@ -1,0 +1,44 @@
+513  1.271786752692376300
+engy = 0.000001
+engy = 0.000001
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+engy = 0.000000
+errAll = 0.016740
+errAll = 0.016594
+errAll = 0.016428
+errAll = 0.016198
+errAll = 0.015686
+errAll = 0.013824
+errAll = 0.013507
+errAll = 0.013277
+errAll = 0.013249
+errAll = 0.013217
+errAll = 0.013241
+errAll = 0.013250
+errAll = 0.012784
+errAll = 0.011602
+errAll = 0.011628
+errAll = 0.011695
+errAll = 0.011721
+errAll = 0.011698
+errAll = 0.011690
+errorV = 0.011690
+error0= 0.016815
+RelaxTotal = 3.993164
+rho = errorV(Ncycles)/error0 = 0.695226
+rho = rho^(1/Ncycles)=0.695226

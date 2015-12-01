@@ -1,0 +1,13 @@
+global nn convergence;
+clc
+    fid = fopen('Ctable2_OPT.txt','a'); 
+    fprintf(fid,'size           cycle_number               time                    convergence factor               energy                        ||g||\n');    
+%     load fstar_nonr
+%     fstar=fstar_nonr;
+for i=1:5
+   level=i+1;
+
+   opt;
+    fprintf(fid,'%4i            %4i                    %6.2f                    %6.6f                        %6.5f                     %6.8f\n',nn,NF(1,1),e,convergence,F,norm(G));
+    end
+fclose(fid);

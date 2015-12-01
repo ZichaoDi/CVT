@@ -1,0 +1,29 @@
+function zH = downdate (zh,res_prob)
+global IhH globalN
+m2=length(zh);
+n=m2/2;
+zh=reshape(zh,2,n);
+
+[XY2,B,globalind]=coarsen_mlevel(zh,zh);
+if (n==globalN(1))
+    IhH1=B;
+elseif(n==globalN(2))
+    IhH1=B;
+    
+zH=XY2;
+m1=size(XY2,2);
+% zH=XY';
+% if (length(zh) == N(1));figure(5); hold on;
+%     plot(zh(1,:),zh(2,:),'rx','linewidth',2);
+%     plot(zH(:,1),zH(:,2),'BO','linewidth',2);
+% elseif(length(zh) == N(2));figure(6); hold on;
+%     plot(zh(1,:),zh(2,:),'rx','linewidth',2);
+%     plot(zH(:,1),zH(:,2),'BO','linewidth',2);
+% elseif(length(zh) == N(3));figure(7); hold on;
+%     plot(zh(1,:),zh(2,:),'rx','linewidth',2);
+%     plot(zH(:,1),zH(:,2),'BO','linewidth',2);
+% end
+% drawnow;
+
+zH=reshape(zH',2*m1,1);
+

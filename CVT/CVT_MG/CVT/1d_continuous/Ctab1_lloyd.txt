@@ -1,0 +1,7 @@
+size           cycle_number               time                    convergence factor
+size           cycle_number               time                    convergence factor
+  32            4463                      0.32                    0.997292
+size           cycle_number               time                    convergence factor
+  32            4101                      0.28                    0.996984
+size           cycle_number               time                    convergence factor
+size           cycle_number               time                    convergence factor

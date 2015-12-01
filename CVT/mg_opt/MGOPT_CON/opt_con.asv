@@ -1,0 +1,25 @@
+%----------------------------------------------------------------------
+% Solve via traditional optimization
+%----------------------------------------------------------------------
+global current_n
+global NF N        % NF counts # of function evals on each grid
+%----------------------------------------------------------------------
+do_setup;
+NF=[0*N];
+more off;
+it   = 1;
+fnl  = 0*v0;
+n    = N(1);
+current_n = n;
+%----------------------------------------------------------------------
+myfun = 'sfun';
+t=cputime;
+nit=10000;
+[A,b,Aeq,beq,lb,ub,options]=setup_par(v0,nit);
+[v,fval,exitflag,output,lambda,grad]  = fmincon(myfun,v0,A,b,Aeq,beq,lb,ub,nonlcon,options);
+NF(1)=output.iterations;
+e=cputime-t;
+fprintf(['Time elapsed: ',num2str(e),' sec\n']);
+doplot(0,v);
+report_results_con(N);
+more on;

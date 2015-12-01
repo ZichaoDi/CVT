@@ -1,0 +1,50 @@
+%----------------------------------------------------------------------
+% Set up a problem for optimization [multigrid or regular]
+%----------------------------------------------------------------------
+clear  functions
+global bounds
+global grad_type
+%global B2 B3 B4 globalind1 globalind2 globalind3
+global N XY globalN
+global  bdry mminx mmaxx mminy mmaxy  bd XY2
+%----------------------------------------------------------------------
+% Specify technique for calculating gradient
+%----------------------------------------------------------------------
+grad_type = 'adj';  % 'adj' = adjoint/exact
+                    % 'fdr' = finite-difference [real]
+                    % 'fdi' = finite-difference [complex]
+%----------------------------------------------------------------------
+% Initialize arrays for discretizations
+%----------------------------------------------------------------------
+%array=load('voronoi_2d_binning_example.txt');
+ %array=load('dataset1e6.txt');
+%density=inline('x+y');
+ 
+ XY = load(['data80.txt']);
+XY=XY';
+bd=[];
+mminx = 0; 
+ mmaxx = 100;
+ mminy = 0;
+ mmaxy = 100; 
+dx=0.5;h=(mmaxx-mminx)/dx+1;A=ones(1,h);
+bd(1,:) = [mminx:dx:mmaxx,mmaxx.*A, mmaxx:-dx: mminx,mminx.*A ];
+bd(2,:) = [mminy.*A, mminy:dx: mmaxy, mmaxy.*A,mmaxy:-dx:mminy ];
+% bdry(1,:) = 100*[-0.5 -0.5  -0.5 -0.5  -0.5 -0.25 0.0 0.25 0.5 0.5 0.5  0.5  0.5  0.25 0.0 -0.25];
+%   bdry(2,:) = 100*[-0.5 -0.25 0.0 0.25 0.5 0.5  0.5 0.5  0.5 0.25 0.0 -0.25 -0.5 -0.5  -0.5 -0.5];
+bdry(1,:) = 100*[0.0 0.0  0.0 0.0  0.0 0.25 0.5 0.75 1.0 1.0 1.0  1.0  1.0  0.25 0.5 0.75];
+bdry(2,:) = 100*[0.0 0.25 0.5 0.75 1.0 1.0  1.0 1.0  1.0 0.0 0.25 0.5 0.75 0.0  0.0 0.0];
+  [XY2,B,globalind]=coarsen_mlevel(XY,XY);
+  [XY3,B,globalind]=coarsen_mlevel(XY2,XY2);
+  [XY4,B,globalind]=coarsen_mlevel(XY3,XY3);
+globalN=[size(XY,2),size(XY2,2),size(XY3,2),size(XY4,2)];
+N=2*[size(XY,2),size(XY2,2),size(XY3,2)];%%discretization level
+m=size(XY,2);
+
+nmax = m;
+
+v0=reshape(XY,2*m,1);
+%----------------------------------------------------------------------
+% Initialization for optimization
+%----------------------------------------------------------------------
+bounds = 0; % no bounds on variables

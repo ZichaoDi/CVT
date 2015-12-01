@@ -1,0 +1,20 @@
+This directory has Matlab routines for solving a minimal surface problem.
+For inst
+
+Use the command "opt" for traditional optimization, and "refine" for 
+successive refinement.
+---------------------------------------------------------
+SPECIFIC: must be customized to the application
+---------------------------------------------------------
+do_setup.m	    general setup for optimization
+global_setup.m	"global" setup for each discretization
+doplot.m	    plot solution from optimization
+downdate.m	    downdate to coarser grid
+update.m	    update to finer grid
+getf.m		    compute function value
+getg_adj.m	    compute gradient
+---------------------------------------------------------
+UNIQUE:   unique to this application
+---------------------------------------------------------
+getborder.m	    define boundary values for surface
+getborder_res.m	define boundary values for surface [residual case]         

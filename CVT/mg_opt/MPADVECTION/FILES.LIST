@@ -1,0 +1,21 @@
+MG/OPT routines
+
+Use the command "fmg" to run full multigrid, and 
+"opt" to run traditional optimization.
+---------------------------------------------------------
+SPECIFIC: must be customized to the application
+---------------------------------------------------------
+do_setup.m	general setup for optimization
+global_setup.m	"global" setup for each discretization
+doplot.m	plot solution from MG/OPT
+downdate.m	downdate to coarser mesh
+update.m	update to finer mesh
+getf.m		calculate function value
+getg_adj.m	calculate gradient [adjoint/exact]; if needed
+---------------------------------------------------------
+UNIQUE:   unique to this application
+---------------------------------------------------------
+advect_bc.m	compute the b.c. u0(t) = u(0,t)
+advect_geta.m	compute the values of velocity field a(x)
+advect_getu.m	compute the state variables u(x,t)
+advect_ic.m	compute the i.c. u0(x) = u(x,0)

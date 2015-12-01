@@ -1,0 +1,169 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\include{wendy_macros}
+\title{\ progress on MG/OPT}
+\author{Zichao Di}
+\date{\today}
+\begin{document}
+  \maketitle 
+
+\section{Pieces of Algorithm:}
+
+\begin{itemize}
+\item{\em  Tried Initial estimate:}
+\begin{itemize}
+\item{\em random numbers}
+\item{\em close-solution variables}
+\end{itemize}
+
+\item{\em Pre-smoothing:}
+Use fmincon to compute $(\bar y_{h}, \bar \lambda_{h})$.\\
+
+\item{\em Downdate:}
+$\bar y_{H}=\IhH \bar y_{h}$ where $\IhH$ is the full weighting matrix starting from the second variable\
+
+$\bar \lambda_{H}=\IhH \bar \lambda_{h}$\
+
+$\hat V_{H}=\nabla_{y} \hat L_{H}(\bar y_{H},\bar \lambda_{H})-\IhH \nabla_{y}\hat L_{h}(\bar y_{h},\bar \lambda_{h})$\
+
+$\hat S= C_{H}(\bar y_{H})-\IhH C_h(\bar y_{h})$\\
+
+\textbf{Remark:} Choosing such downdate operator is reasonable since it satisfies the variational property, and also, the surrogate constraint is consistent with the analytic conclusion that fine and coarse level share same bound constraints under full weighting.\\
+
+\item{\em Shifted model:}
+$g_{s}(y_{H})=g_{H}(y_{H})-\hat V_{H}^{T}y_{H}$ s.t. $C_{s}(yH) \equiv C_{H}(y_{H})-\hat S \leq 0$ which in our case is $x \geq -0.01.$\\
+
+\item {\em OPT $g_{s}(y_{H})$ by fmincon get $y_{H}^{+}$}\\
+
+\item {\em $e_{H}=y_{H}^{+}-y_{H}^{-},$ $e_{h}=\IHh e_{H}$ where $\IHh=2[\IhH]^{T}$, I believe $\IHh$ is chosen right too since except the same reason for $IhH$. Also, with the above update and downdate operator, MG/OPT works well for unconstrained problem}\\
+
+\item{\em Line search:}
+Use Armijo based on Merit function to find the step length.\
+
+Issues here: \
+\begin{itemize}
+\item{\em I can't apply merit function to MG-TN since I can't compute the corresponding $\lambda$}\
+
+\item{\em be able to apply merit function to MG-Fmincon, but having trouble to compute the gradient $GM$ of merit function.}\footnote{\bf Note: We choose merit function as $M(x)= f(x)+ violation^{T}\lambda +\frac{ \rho} {2} violation^{T} violation$, where $violation = max(Ax-b,0)$, $\rho$, penalty parameter, tried $[1,10,100]$ doesn't change result very differently, $GM$ is used to test if the direction $e_{h}$ is a descent direction by $e_{h}^{T}GM< 0$}
+
+\item{\em post-smoothing:} 
+$y_{h}^{+}=y_{h}^{-}+\alpha e_{h}$, apply fmincon.
+\end{itemize}
+
+\end{itemize}
+
+\section{All pieces of fmincon:}\
+
+ $min f(x) s.t. \left\{
+\begin{array}
+c(x)\leq 0\\
+ceq(x)=0\\
+Ax \leq b\\
+Aeqx = beq\\
+lb \leq x \leq ub\\
+\end{array}\right\}$\\
+
+The way to apply fmincon: $x=fmincon(fun, x_{0}, A, b, Aeq, beq, lb, ub, nonlcon, option).$\
+
+In our case, given $Aeq, beq, lb, ub = [\quad], A= -I_{n\times n}, b= 0.01 e_{n}$ where $e_{n}$ is the vector every component $=1.$\\
+
+Algorithm: Interior-point method.\footnote{\bf Note: In fmincon, we don't really need to provide $\lambda$ since it will compute automatically.}\
+
+Issues:
+\begin{itemize}
+\item{\em Merit function used in fmincon is different from our fmincon, does it matter?}\
+
+\item{\em The first-order optimality condition used in fmincon $\nabla F= \| v.*g\|_{\infty}$, where $v$ is defined in box-constraint, I tried apply exact solution as initial estimate into fmincon with one-bound constraint, it doesn't improve convergence. Conversly at the first iteration, fmincon push away the solution to a wrong direction. i.e. the first output $\nabla F$ is different away from the conrresponding optimal $\nabla F^{*}$. Theoretically, $\nabla F^{*}\approx \nabla F$, where in our case, $\nabla F$ has magnitude $10^{2}.$}\footnote{\bf Note: This is the most important issue I have to explore}\\
+
+\item{\em $\lambda^{k}$ get from opt-con doesn't satisfy complementary condition, since in the unbinding component of $\lambda^{k}$, it should equal to $0$ but in fact, it has magnitude $10^{-3}$. According to section 15.3 [Giva], it makes sense since $\|x^{k}-x^{*}\|=O(\epsilon)=\|\lambda^{k}-\lambda^{*}\|.$}
+\end{itemize}
+
+\section{Reasons MG-fmincon should work:}\
+
+\begin{itemize}
+\item{\em It works well for unconstrained case}
+\item{\em The coarse level solution is a good approximation to the fine level solution.\footnote{\bf Note: 'refine' works well}}
+\item{$\IhH=C[\IHh]^{T}$ and $\IhH A_{h} \IHh = A_{H}$.}
+\end{itemize}
+
+\section{unsure elements}
+\begin{itemize}
+\item{\em Is that enough to set the coarse constraint same to fine level? No, since it has been proved using current downdate will distort direction from coarse level}
+\item{\em Coarse level correction doesn't give a sufficient correction to fine level\footnote{\bf Note: step solution is inconsistent with search direction}}
+\end{itemize}
+
+\section{Some extra experiments I have tried}
+\begin{itemize}
+\item Pull out the coarse shifted problem, treat as a single optimization problem byt $OPT_TN$ and test if it converges well.
+\begin{itemize}
+\item Conclusion: it is converging well, so form this aspect, our coarse model shoulb be built correctly. \\
+\item Hint: the problem should be most possibly at transfer operator or the choice of step length.
+\end{itemize}
+
+\item Treat the constraint as bound constraint in 'fmincon'. So there is no linear and nonliear constraints any more. Optimize on it on sigle level, it did converge to the correct solution. But apply with MG ,the convergence failed for the same output that at some point, the variables get stuck and don't move any more.
+
+\item output the variable after everytime 'fmincon' called 'sfun' in order to know how does 'fmincon' treat infeasible points
+\end{itemize}
+
+
+\section{Progress on Apr.1}
+\begin{itemize}
+\item realize some werid behavior of fmincon doing on the infeasible variables, it may have a specific way to direct the infeasible point to feasible \footnote {\bf Guess: interior-point method in fmincon may have a general choose of step lentgh to push infeasible point to feasible region which result in too far from exact solution and cost more to get back to after pre-smoothing .} \\
+\item Try to manually fix the infeasible variable to strictly feasible in line search of MG/OPT so that when call fmincon to post-smoothing, fmincon won't waste computation to pull back infeasible to feasible. \footnote {\bf Improvement: In this not general fixing way, $MG/OPT_{fmincon}$ does take advantage from coarse optimization }\\
+\end{itemize}
+
+\section{Progress on Apr. 13}
+\begin{itemize}
+\item For constrained case with fmincon, fix the mistake when computing the gradient of merit function at line search, and the performance is improved which at the first several iterations, MG/OPT showed much benefit rather than OPT by fine level evalutaion gradient, although after that, MG/OPT-fmincon installed at some point because the fmincon set up will still pull the infeasible point too far back to strictly feasible region. But we agreed that this performance is enough to show the improvement of MG/OPT.\\
+
+\item For bound constraint with TN, I applied merit function to line search and also let Lagrangian function come into play at the step to construct sorragate model by using similar least square lagrangian multiplier estimate to estimate the multipliers at the current point. Similar consequence to fmincon, MG/OPT-TN also shows benefit at the first few iterations and then installed, the reason is the downdate operator pulls the coarse binding solution to unbinding and give a negative decent direction to the already binding fine solution.  
+\end{itemize}
+
+\section {Next steps:}
+\begin{itemize}
+\item{\em Apply the coarse constraints seeting up by Ph.L.Toint to our algorithm.}
+\item Once done the one side bound constraint, try two sides bound constraint and do the same test.
+\item  Figure out how fmincon estimate lagrangian multiplier at the current solution.
+\item{\em Explore more on fmincon. eg. how it computes the 1st-order optimality , how it restrict variables in feasible region?}
+\item{\em Simplify my MG-fmincon, double-check on every little piece to make sure no mistake.\footnote{\bf Note: all pieces including the unrelavant part with current case}}
+
+\end{itemize}
+
+\section {Goals:}
+\begin{itemize}
+\item First critical thing is to figure out why two variables with tiny difference\footnote{\bf Note: this difference is in terms of infinity norm of their subtraction} will show dramatic difference\footnote{\bf Note: This difference is in terms of the output function value} in the first iteration of 'fmincon'\footnote{\bf Note: This observation is found at the beginning of post-smoothing which take the value from recursion as initial guess with 2 levels} 
+\item{\em For unconstraint case, improve fmincon to make it have the same performance as TN}
+\item{\em For constraint case, improve MG-Fmincon to make it converge. Once this is done, may have some hint how to fix MG-TN}
+\item{\em Once it converges, prepare the performance with OPT}
+\end{itemize}
+
+\section{Tasks for the coming  weekend}
+\begin{itemize}
+\item 2D-CVT:
+\begin{itemize}
+\item Run MG/OPT on 2D-CVT triangle domin
+\item double check how does the code cut on the out of bound generators
+\end{itemize}
+\item CVT paper:
+\begin{itemize}
+\item Replot pictures on cycles, convergence factor for more generators with same low perturbation.
+\item Plot the same element comparison for Lloyd 2D-CVT.
+\item Test more random initial approximation on 1D-CVT
+\end{itemize}
+\item Finish homework on Mearsure Theorey and take a look of Thursday's note on Evolution Equation
+\end{itemize}
+
+\section{Plan for next week}
+\begin{itemize}
+\item Constrained MG/OPT:
+\begin{itemize}
+\item Start to learn more on Interior -point method and measure function.
+\item Try MG/OPT more cycles with mordified line search
+\end{itemize}
+\end{itemize}
+
+
+
+
+
+\end{document}

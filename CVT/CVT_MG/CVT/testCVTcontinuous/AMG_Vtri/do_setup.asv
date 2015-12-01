@@ -1,0 +1,84 @@
+%----------------------------------------------------------------------
+% Set up a problem for optimization [multigrid or regular]
+%----------------------------------------------------------------------
+clear  functions
+global bounds
+global grad_type
+global N XY XYbd IHh inner bd IHhtot level
+global xlimit ylimit k
+%----------------------------------------------------------------------
+% Specify technique for calculating gradient
+%----------------------------------------------------------------------
+grad_type = 'adj';  % 'adj' = adjoint/exact
+% 'fdr' = finite-difference [real]
+% 'fdi' = finite-difference [complex]
+%----------------------------------------------------------------------
+% Initialize arrays for discretizations
+%----------------------------------------------------------------------
+load data28;
+dataExact = data28;
+dataExact(:,1:2)=100*dataExact(:,1:2);
+%level=4;   %%--------------------------------
+N=zeros(1,level);
+inner=cell(1,level);
+XY=cell(1,level);
+bd=cell(1,level);
+XYbd=cell(1,level);
+IHhtot=cell(1,level);
+IHh=cell(1,level-1);
+for i=1:level
+    [dataExact,nn,B] = refine_cvt(dataExact);
+    IN=find(dataExact(:,3)==1);
+    inner{level-i+1}=IN;
+    XY{level-i+1}=dataExact(inner{level-i+1},1:2)';
+    OUT=find(dataExact(:,3)==0);
+    bd{level-i+1}=OUT;
+    XYbd{level-i+1}=dataExact(bd{level-i+1},1:2)';
+    N(level-i+1)=nn;  %discretization level
+    IHhtot{level-i+1}=B;
+end
+for i=1:level-1
+    inh=inner{i};
+inH=inner{i+1};
+BB=IHhtot{i};
+IHh{i}=BB(inh,inH);
+end
+v0=XY{1};
+pert1 = 1e-3;
+pert2 = -1e-;
+for i=1:N(1)
+    v1=v0(1,i)+pert1*i;
+    v2=v0(2,i)+pert2*i;
+    if(v2<sqrt(3)*v1+50*sqrt(3) & v2<-sqrt(3)*v1+50*sqrt(3) & v2>0)
+        v0(1,i)=v1;
+        v0(2,i)=v2;
+    end
+end
+% bb=XYbd{1};
+% %plot(v0(1,:),v0(2,:),'b.',bb(1,:),bb(2,:),'ro');
+% tt=[v0,bb];
+% hold on;
+%voronoi(tt(1,:),tt(2,:))
+%%%%%%%%%%%###########################################################
+%%%%%%%%%%%%%%%generate initial random guess
+% v0=zeros(2,N(1));
+% rand('state',0);
+% a=rand(N(1),1);
+% pert=2;
+% for i=1:N(1)
+%     b(i)=(1-a(i))*rand(1,1);c(i)=1-a(i)-b(i);
+%     v0(1:2,i)=a(i)*[-50+pert;0+pert]+b(i)*[50-pert;0+pert]+c(i)*[0;50*sqrt(3)-pert];
+% end
+% %     noin=find(v0(2,:)<sqrt(3)*v0(1,:)+50*sqrt(3) & v0(2,:)<-sqrt(3)*v0(1,:)+50*sqrt(3) & v0(2,:)>0);
+% % size(noin)
+% % bb=XYbd{end};
+% % plot(v0(1,:),v0(2,:),'b.');hold on; plot(bb(1,:),bb(2,:),'ro')
+%%%%%%%%%%%%%%###########################################################
+v0 = reshape(v0,2*N(1),1);
+xlimit=[-50 0 50];
+ylimit=[0 sqrt(3)*50 0];
+k=convhull(xlimit,ylimit);
+% %----------------------------------------------------------------------
+% Initialization for optimization
+%----------------------------------------------------------------------
+bounds = 0; % 0:no bounds on variables

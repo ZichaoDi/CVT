@@ -1,0 +1,180 @@
+function [xstar, f, g, F, G, ierror,ipivot, eig_val] = ...
+  lmqn (x, sfun,low, up, maxit, maxfun, stepmx, accrcy,miu)
+%---------------------------------------------------------
+% truncated-newton method for unconstrained minimization
+% (customized version)
+%---------------------------------------------------------
+global hyk ykhyk hyr yksr ykhyr yrhyr sk yk sr yr ...
+       hg gsk yksk yrsr 
+global NF N current_n   fiter itertest
+%---------------------------------------------------------
+% set up
+%---------------------------------------------------------
+format compact
+format short e
+fprintf(1,'  it     nf     cg           f             |g|\n')
+upd1 = 1;
+ncg  = 0;
+nind = find(N==current_n);
+xnorm  = norm(x,'inf');
+if (stepmx < sqrt(accrcy) | maxfun < 1);
+  ierror = -1;
+  xstar = x; 
+  return;
+end;
+%---------------------------------------------------------
+% compute initial function value and related information
+%---------------------------------------------------------
+[f, g, F, G] = feval (sfun, x);
+oldf   = F;
+fiter(1)=oldf;
+gnorm  = norm(G,'inf');
+nf     = 1;
+nit    = 0;
+itertest(1)=nf+ncg;
+fprintf(1,'%4i   %4i   %4i   % .8e   %.1e\n', ...
+           nit, nf, ncg, F, gnorm)
+%---------------------------------------------------------
+% check for small gradient at the starting point.
+%---------------------------------------------------------
+[ipivot, ierror, x] = crash(x, low, up);
+ftest = 1 + abs(F);
+if (gnorm < .01*sqrt(eps)*ftest);
+    ierror = 0;
+    xstar = x;
+    NF(1,nind) = NF(1,nind) + nit;
+    NF(2,nind) = NF(2,nind) + nf;
+    NF(3,nind) = NF(3,nind) + ncg;
+    return;
+end;
+%---------------------------------------------------------
+% set initial values to other parameters
+%---------------------------------------------------------
+n      = length(x);
+icycle = n-1;
+toleps = sqrt(accrcy) + sqrt(eps);
+rtleps = accrcy + eps;
+difnew = 0;
+epsred = .05;
+fkeep  = F;
+conv   = 0;
+ireset = 0;
+% ind = find((ipivot ~= 2) & (ipivot.*g>0));
+% if (length(ind) > 0); 
+%   ipivot(ind) = zeros(length(ind),1);
+% end;
+%---------------------------------------------------------
+% initialize diagonal preconditioner to the identity
+%---------------------------------------------------------
+d   =  ones(n,1);
+%---------------------------------------------------------
+% ..........main iterative loop..........
+%---------------------------------------------------------
+% compute search direction
+%---------------------------------------------------------
+argvec = [accrcy gnorm xnorm];
+[p, gtp, ncg1, d, eig_val{nit+1}] = ...
+	modlnp (d, x, G, maxit, upd1, ireset, 0, ipivot, argvec, sfun,miu);
+ncg = ncg + ncg1;
+load testv;
+while (~conv);
+   oldg   = G;
+   oldf   = F;
+   fiter(nit+2)=oldf;
+      itertest(nit+2)=nf+ncg;
+%---------------------------------------------------------
+% line search
+ [x, F, G, nf1, ierror, alpha] = lin_Barrier (p, x, sfun);
+ if()
+ ee=testv-x;
+ figure(15);plot(ee,'r.-');pause;
+%---------------------------------------------------------------  
+   nf = nf + nf1;
+%---------------------------------------------------------
+   nit = nit + 1;
+   gnorm = norm(G,'inf');
+   fprintf(1,'%4i   %4i   %4i   % .8e   %.1e\n', ...
+      nit, nf, ncg, F, gnorm)
+   if (ierror == 3);
+     if isempty(ncg); ncg = 0; end; 
+     xstar = x;
+     NF(1,nind) = NF(1,nind) + nit;
+     NF(2,nind) = NF(2,nind) + nf;
+     NF(3,nind) = NF(3,nind) + ncg;
+     disp('no step length taken')
+     return;
+   end;
+%---------------------------------------------------------
+% stop if more than maxfun evalutations have been made
+%---------------------------------------------------------
+   if (nf >= maxfun);
+     ierror = 2;
+     xstar = x;
+     NF(1,nind) = NF(1,nind) + nit;
+     NF(2,nind) = NF(2,nind) + nf;
+     NF(3,nind) = NF(3,nind) + ncg;
+     disp('2dfdfd')
+     return;
+   end;
+%---------------------------------------------------------
+% set up for convergence and resetting tests
+%---------------------------------------------------------
+   ftest  = 1 + abs(F);
+   xnorm  = norm(x,'inf');
+   difold = difnew;
+   difnew = oldf - F;
+   yk     = G - oldg;
+   sk     = alpha*p;
+   if (icycle == 1);
+       if (difnew >   2*difold); epsred =   2*epsred; end;
+       if (difnew < 0.5*difold); epsred = 0.5*epsred; end;
+   end;
+%---------------------------------------------------------
+% convergence test
+%---------------------------------------------------------
+   conv = cnvtem_inner(x,low,up,sfun);
+   if (conv);
+     [f, g, F, G] = feval (sfun, x);
+     ierror = 0;
+     xstar = x;
+     NF(1,nind) = NF(1,nind) + nit;
+     NF(2,nind) = NF(2,nind) + nf;
+     NF(3,nind) = NF(3,nind) + ncg;
+     disp('inner iteration converges')
+     return;
+   end;
+%---------------------------------------------------------
+% update lmqn preconditioner
+%---------------------------------------------------------
+   yksk = yk'*sk;
+   ireset = (icycle == n-1 | difnew < epsred*(fkeep-F));
+   if (~ireset);
+       yrsr = yr'*sr;
+       ireset = (yrsr <= 0);
+   end;
+   upd1 = (yksk <= 0);
+%--------------------------------------------------------
+% update active set
+%--------------------------------------------------------
+[ipivot] = modz_simplified (x, p, ipivot, low, up);
+%---------------------------------------------------------
+% compute search direction
+%---------------------------------------------------------
+   argvec = [accrcy gnorm xnorm];
+   [p, gtp, ncg1, d, eig_val{nit+1}] = ...
+	   modlnp (d, x, G, maxit, upd1, ireset, 0, ipivot, argvec, sfun,miu);
+   ncg = ncg + ncg1;
+%---------------------------------------------------------
+% store information for lmqn preconditioner
+%---------------------------------------------------------
+   if (ireset);
+       sr = sk;
+       yr = yk;
+       fkeep = F;
+       icycle = 1;
+   else
+       sr = sr + sk;
+       yr = yr + yk;
+       icycle = icycle + 1;
+   end;
+end;

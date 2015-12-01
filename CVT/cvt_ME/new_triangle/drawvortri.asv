@@ -1,0 +1,12 @@
+function z = drawVorTri(data,v,c);
+
+figure(1);
+hold on;
+%axis([-0.5 0.5 0 0.9]);
+plot(data(:,1),data(:,2),'b.');
+for i=1:length(c)
+    x = v(c{i},:);
+    sz = size(x,1);
+    x(sz+1,:) = x(1,:);
+    plot(x(:,1),x(:,2),'-');
+end    

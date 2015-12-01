@@ -1,0 +1,44 @@
+\documentclass[10pt]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{bbding}
+\include{wendy_macros}
+\title{\ Summary}
+\author{Zichao Di}
+\date{\today}
+\begin{document}
+  \maketitle 
+
+\section{strategies}
+\begin{itemize}
+\item Bending Line search: \
+
+Use Armijo line search to determine the step size, if $x_i+\alpha_i p_i$ infeasible, set $\alpha_i=0$
+\item Modified Coarse Grid Constraint:\
+
+ Modify coarse grid bounds as $\tilde{l_H}\leq x_H \leq \tilde{u_H}$ such that $l_h \leq v_h + I_H^{h} (e_2-v_H)\leq u_h$
+\item Rescaled transform operator: \
+
+In 2D case, Let $A=\left [ \dots \quad \frac{1}{4} \quad \frac{1}{2} \quad \frac{1}{4} \quad \dots \quad \frac{1}{2} \quad 1 \quad \frac{1}{2} \quad \dots \quad \frac{1}{4} \quad \frac{1}{2} \quad \frac{1}{4} \quad \dots \right ]$\
+traditional update and downdate is: $I_H^h= A^T;  \quad I_h^H= \frac{1}{4}A$, rescaled is: $I_H^h= 2A^T;  \quad I_h^H= \frac{1}{8}A$.
+\end{itemize}
+
+\section{Application}
+
+\begin{tabular}{|l|l|l|l|} \hline
+    & Bending Line Search &  Modified Constraint  &  Rescaled Operator \\ \hline
+1D Laplacian     &    \XSolidBold   &  \CheckmarkBold   &  \XSolidBold   \\ \hline
+Advection          &  \XSolidBold  &   \CheckmarkBold    &  \XSolidBold   \\ \hline
+Linear/Bilinear Control    &  \XSolidBold  &  \XSolidBold   &   \CheckmarkBold    \\ \hline
+\end{tabular}
+
+
+
+
+
+
+\end{document}

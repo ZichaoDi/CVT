@@ -1,0 +1,40 @@
+3  0.402154690464579690
+3  0.804309380931807370
+engy = 0.009268
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+errAll = 0.004351
+errAll = 0.000321
+errAll = 0.000121
+errAll = 0.000026
+errAll = 0.000006
+errAll = 0.000002
+errorV = 0.000121
+errorV = 0.000002
+error0= 0.011547
+RelaxTotal = 4.500000
+rho = errorV(Ncycles)/error0 = 0.000194
+rho = rho^(1/Ncycles)=0.013922
+3  0.402154690464579690
+3  0.804309380931807370
+engy = 0.009268
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+errAll = 0.004351
+errAll = 0.000321
+errAll = 0.000121
+errAll = 0.000026
+errAll = 0.000006
+errAll = 0.000002
+errorV = 0.000121
+errorV = 0.000002
+error0= 0.011547
+RelaxTotal = 4.500000
+rho = errorV(Ncycles)/error0 = 0.000194
+rho = rho^(1/Ncycles)=0.013922

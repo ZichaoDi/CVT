@@ -1,0 +1,79 @@
+rand('state',10);
+x = rand(100,2);
+st_op=0;
+while( st_op == 0),
+    j=1+j;
+[v,c]=voronoin(x);
+% [vx,vy]=voronoi(x(:,1),x(:,2));
+% [a,b]=find(v(:,2)~=inf);
+% 
+% axis=([max(v(a,1)) min(v(a,1)) max(v(a,2)) min(v(a,2))]);
+
+for i=1:length(c)
+    TF=isinf(v(c{i},:));
+     if  TF==zeros(size(v(c{i},:)))
+         node=[v(c{i},1) v(c{i},2)];
+         [p,t]=mesh2d(node);
+     end
+         
+%         X1=[v(c{i},1)];Y1=[v(c{i},2)];X2=[0 1 1 0 0]; Y2=[0 0 1 1 0];
+%         [xi yi]=polyxpoly(X1,Y1,X2,Y2)
+%         text(xi,yi,num2str(i));
+%         A=v(c{i},:);
+%         [a,b]=find(A>1|A<0);
+%         A(a,:)=[];
+%         A=[A;[xi yi]];
+%         node=[A(:,1) A(:,2)];
+%         [p,t]=mesh2d(node);
+
+
+    sum_x=0; sum_y=0; sum=0;
+    for j=1:length(t)
+        func_x=inline('(x.^2+y).*x');           %density function=x^2+y
+        func_y=inline('(x.^2+y).*y');
+        func=inline('x.^2+y');
+        x1=p(t(j,:),1); y1=p(t(j,:),2);
+        I_x=triangleQuad(func_x,x1,y1);
+        sum_x=sum_x+I_x;
+        I_y=triangleQuad(func_y,x1,y1);
+        sum_y=sum_y+I_y;
+        I=triangleQuad(func,x1,y1);
+        sum=sum+I;
+        
+        
+    end
+    close;
+   
+    sum_energy=0;sum_energy(i)=0
+     centroid_x(i)=sum_x/sum
+    centroid_y(i)=sum_y/sum;
+    for j=1:length(t)
+        x1=p(t(j,:),1); y1=p(t(j,:),2);
+        sqr=@(x,y)(x.^2+y).*((x-centroid_x(i))^2+(y-centroid_y(i))^2);
+        I_energy=triangleQuad(sqr,x1,y1);
+        sum_energy(i)=sum_energy(i)+I_energy;
+    end
+sum_energy=sum_energy+sum_energy(i);
+end
+ newx=[centroid_x;centroid_y];
+newx=newx'
+%return;
+ind = (~isnan(x-newx))&(~isinf(x-newx));
+if (norm(x(ind)-newx(ind))/norm(x(ind))<1e-6) fprintf('no movement'); break;
+else  x=newx
+end
+end
+% subplot(2,1,1);
+% plot(sum_energy,'.-');
+% % plot(x(:,1),x(:,2),'r+',vx,vy,'b-'); 
+% subplot(2,1,2);
+% voronoi(x(:,1),x(:,2));
+% hold on;
+% for i=1:length(c)
+%     plot(centroid_x(i),centroid_y(i),'ro');
+% end
+%     
+
+
+
+

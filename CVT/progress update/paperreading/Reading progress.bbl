@@ -1,0 +1,165 @@
+\begin{thebibliography}{10}
+
+\bibitem{AL1}
+Alfio Borzi.
+\newblock Multilevel methods in optimization with partial differential
+  equations.
+\newblock lecture notes, Karl-Franzens-Universit\"{a}t Graz, Graz, Austria.
+
+\bibitem{AC}
+Achi Brandt and Colin~W. Cryer.
+\newblock Multigrid algorithms for the solution of linear complementarity
+  problems arising from free boundary problems.
+\newblock {\em SIAM J. on Scientific Computing}, 4:655--684, 1983.
+
+\bibitem{RJ1}
+R.H. Byrd and J.C. Gilbert.
+\newblock A trust region method based on interior point techniques for
+  nonlinear programming.
+\newblock Report otc 96/02, Optimization Technology Center, Northwestern
+  University, 1996.
+
+\bibitem{ec1}
+E.~Casas and F.~Troltzsch.
+\newblock Recent advances in the analysis of pointwise state-constrained
+  elliptic optimal control problems.
+\newblock {\em SIAM Journal on Scientific Computing}, 24:597--618, 2002.
+
+\bibitem{AD}
+Andrei Draganescu.
+\newblock Multigrid preconditioning of linear systems for semismooth newton
+  methods applied to optimization problems constrained by smoothing operators.
+\newblock 2011.
+
+\bibitem{TBV}
+Thomas Dreyer, Bernd Maar, and Volker Schulz.
+\newblock Thomas dreyera, bernd maara, volker schulzb.
+\newblock {\em Journal of Computational and Applied Mathematics}, 12:67--84,
+  2000.
+
+\bibitem{M3}
+M.~Engel and M.~Griebel.
+\newblock A multigrid method for constrained optimal control problems.
+\newblock {\em Journal of Computational and Applied Mathematics},
+  235:4368--4388, 2011.
+
+\bibitem{ej1}
+E.~Gelman and J.Mandel.
+\newblock On multilevel iterative methods for opitimization problems.
+\newblock {\em Mathematical Programming}, 48:1--17, 1990.
+
+\bibitem{L1}
+Nick Gould.
+\newblock Numerical methods for large-scale nonlinear optimization.
+\newblock {\em Acta Numerica}, 14:299--361, 2005.
+
+\bibitem{m2}
+Serge Gratton, M\'{e}lodie Mouffe, Philippe~L. Toint, and Melissa
+  Weber-Mendon\c{c}a.
+\newblock A recursive trust-region in infinity norm for bound-constrained
+  nonlinear optimization.
+\newblock Cerfacs technical report, 2007.
+
+\bibitem{WH}
+W.~Hackbusch and H.~D. Mittelmann.
+\newblock On multi-grid methods for variational inequalities.
+\newblock {\em Numerische Mathematik}, 42:65--76, 1983.
+
+\bibitem{SB2}
+Subhendu~B. Hazra.
+\newblock Multigrid one-shot method for aerodynamic shape optimization.
+\newblock {\em SIAM Journal on Scientific Computing}, 30:1527--1547, 2008.
+
+\bibitem{M1}
+Subhendu~B. Hazra.
+\newblock Multigrid one-shot method for state constrained aerodynamic shape
+  optimization.
+\newblock {\em SIAM Journal on Scientific Computing}, 30:3220--3248, 2008.
+
+\bibitem{RR2}
+R.~H.~W. Hoppe and R.~Kornhuber.
+\newblock Adaptive multilevel methods for obstacle problems.
+\newblock {\em SIAM Journal on Numerical Analysis}, 31:pp. 301--323, 1994.
+
+\bibitem{ap1}
+A.~Iontcheva and P.~Vassilevski.
+\newblock Monotone multigrid methods based on element agglomeration coarsening
+  away from the contact boundary for the signorini's problem.
+\newblock {\em Numerical Linear Algebra with Applications}, 11:189--204, 2004.
+
+\bibitem{JV1}
+J.~E. Jones and P.~S. Vassilevski.
+\newblock Amge based on element agglomeration.
+\newblock {\em SIAM Journal on Scientific Computing}, 23:109--133, 2001.
+
+\bibitem{RK3}
+Ralf Kornhuber.
+\newblock Monotone multigrid methods for elliptic variational inequalities i.
+\newblock {\em I. Numer. Math}, 69:18--4, 1993.
+
+\bibitem{RK4}
+Ralf Kornhuber.
+\newblock Monotone multigrid methods for elliptic variational inequalities ii.
+\newblock {\em Numerische Mathematik}, 72:481--499, 1996.
+
+\bibitem{RR}
+Ralf Kornhuber and Rolf Krause.
+\newblock Adaptive multigrid methods for signorini’s problem in linear
+  elasticity.
+\newblock {\em Computing and Visualization in Science}, 4:9--20, 2001.
+
+\bibitem{RK2}
+R.~Krause.
+\newblock From inexact active set strategies to nonlinear multigrid methods.
+\newblock In Peter Wriggers and Udo Nackenhorst, editors, {\em Analysis and
+  Simulation of Contact Problems}, volume~27 of {\em Lecture Notes in Applied
+  and Computational Mechanics}, pages 13--21. Springer Berlin / Heidelberg,
+  2006.
+
+\bibitem{RK}
+Rolf Krause.
+\newblock On the multiscale solution of constrained minimization problems.
+\newblock In Ulrich Langer, Marco Discacciati, David~E. Keyes, Olof~B. Widlund,
+  and Walter Zulehner, editors, {\em Domain Decomposition Methods in Science
+  and Engineering XVII}, volume~60 of {\em Lecture Notes in Computational
+  Science and Engineering}, pages 93--104. Springer Berlin Heidelberg, 2008.
+
+\bibitem{MAR1}
+N.~Maratos.
+\newblock Exact penalty function algorithms for finite dimensional and control
+  optimization problems.
+\newblock Ph. d. thesis, 1978.
+
+\bibitem{CA1}
+C.~Meyer and A.~R\''{o}sh.
+\newblock Superconvergence properties of optimal control problems.
+\newblock {\em SIAM J. on Control and Optimization}, 43:970--985, 2004.
+
+\bibitem{NA}
+Stephen Nash and Ariela Sofer.
+\newblock A barrier method for large-scale constrained optimization.
+\newblock {\em ORSA Journal on Computing}, 5, 1993.
+
+\bibitem{DIA}
+Dorit Ron, Ilya Safro, and Achi Brandt.
+\newblock A fast multigrid algorithm for energy minimization under planar
+  density constraints.
+\newblock {\em Multiscale Model. Simul.}, 8:1599--1620, 2010.
+
+\bibitem{FT1}
+F.~Troltzsch.
+\newblock {\em Optimal Control of Partial Differential Equations}.
+\newblock American Mathematical Society, 2010.
+
+\bibitem{trotten}
+U.Trottenberg, C.W.Oosterlee, and A.Schuller.
+\newblock {\em Multigrid}.
+\newblock Academic Press, 2001.
+
+\bibitem{ma1}
+M.~Vallejos and A.~Borz\'{i}.
+\newblock Multigrid optimization methods for linear and bilinear elliptic
+  optimal control problems.
+\newblock {\em Computing}, 82:31--52, 2008.
+
+\end{thebibliography}

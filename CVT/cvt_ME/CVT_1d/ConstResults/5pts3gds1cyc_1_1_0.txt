@@ -1,0 +1,16 @@
+5  1.311323040951355700
+engy = 0.004143
+engy = 0.003557
+engy = 0.003524
+engy = 0.003521
+engy = 0.003502
+errAll = 0.070852
+errAll = 0.021136
+errAll = 0.010851
+errAll = 0.007501
+errAll = 0.004403
+errorV = 0.004403
+error0= 0.123057
+RelaxTotal = 3.125000
+rho = errorV(Ncycles)/error0 = 0.035781
+rho = rho^(1/Ncycles)=0.035781

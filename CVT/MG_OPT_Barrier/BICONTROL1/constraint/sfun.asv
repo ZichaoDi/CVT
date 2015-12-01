@@ -1,0 +1,18 @@
+function [J,g]=sfun(u)
+global x1 y1 n2 hx v current_n;
+nm=20;%%mesh size;
+n2=nm^2; 
+h=1/(nm+1);
+AA = -delsq(numgrid('S',nm+2))/h^2; %%laplacian matrix
+nx = nm + 2;
+ny = nm + 2;
+[x1,y1,hx,hy] = getborder(nx,ny);
+grad=zeros(2*n2,1);
+z=1+sin(2*pi*x1)*sin(2*pi*y1);  %% target function
+%z=val(x1,y1);
+zc=reshape(z,n2,1);clear z;
+f=1/2*(x(1:n2)-zc)'*(x(1:n2)-zc)+v/2*(x(n2+1:end)')*x(n2+1:end);
+f=f*hx^2;
+grad(1:n2)=x(1:n2)-zc;
+grad(n2+1:end)=v*x(n2+1:end);
+grad=grad*hx^2;

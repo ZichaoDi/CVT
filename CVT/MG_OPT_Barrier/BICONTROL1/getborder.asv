@@ -1,0 +1,29 @@
+function [x,y,hx,hy] = getborder(nx,ny)
+%--------------------------------------------------------------
+% specify boundary conditions for optimal control problem
+%
+% Parameters:
+%
+% Input:
+%	nx	- # of points in x direction
+%	ny	- # of points in y direction
+% Output:
+%	x	- array of x values
+%	y	- array of y values
+%	hx	- spacing in x direction
+%	hy	- spacing in y direction
+
+x0 = 0;
+x1 = 1;
+y0 = 0;
+y1 = 1;
+hx = (x1 - x0)/(nx-1);
+hy = (y1 - y0)/(ny-1);
+x  = (x0:hx:x1)';
+y  =(y0:hy:y1);
+x=x(2:end-1);
+y=y(2:end-1);
+sx0=0*x;
+sy0=0*y;
+sx1=
+%-------------------------------------------------------

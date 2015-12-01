@@ -1,0 +1,6 @@
+% Test the gradient using finite differencing
+
+z0=load('coarsencentroid1.txt');
+z = z0(:);
+n = length(z);
+h 

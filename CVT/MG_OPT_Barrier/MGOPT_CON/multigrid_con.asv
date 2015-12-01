@@ -1,0 +1,211 @@
+function [v,lambda]=multigrid_con(v0,fnl,res_prob,a,sa,c,sc,nonl_eq,sna,nonl_in,snc,res_lb,res_ub);
+%%res_prob==1: coarse level working on shifted function;
+%%res_prob==0;fine level original objective function;
+global current_n N current_fnl NF_con
+global options it bounds_con 
+global GRAPH_N_OLD GRAPH_INDEX_OLD L vvl vvu
+global test_v_in_fmincon v_after_r bind bindH
+h_MG_graph = findobj('Tag', 'multigrid_graph');
+figure(h_MG_graph);
+
+test_v_in_fmincon = 0;
+GRAPH_N_NEW = current_n;
+IND_OLD = find(N==GRAPH_N_OLD);
+IND_NEW = find(N==GRAPH_N_NEW);
+plot([GRAPH_INDEX_OLD GRAPH_INDEX_OLD+1],[IND_OLD IND_NEW]);
+plot([GRAPH_INDEX_OLD GRAPH_INDEX_OLD+1],[IND_OLD IND_NEW],'x');
+GRAPH_N_OLD = current_n;
+GRAPH_INDEX_OLD = GRAPH_INDEX_OLD+1;
+if(res_prob)
+    myfun='sfun_mg';
+else
+    myfun='sfun';
+end
+current_fnl = fnl;
+j=find(current_n==N);
+%--------------------------------------------------------------------------
+%---------------------------coarsest presmoothing:-------------------------
+if(current_n<=min(N))
+    disp('-----------------------------------------------------------------------------------');
+    fprintf('mesh grid is %d\n',current_n);
+    nit=50;
+    [A,b,Aeq,beq,lb,ub,options]=setup_par(v0,nit,res_prob);
+    vvl{j}=lb;
+    vvu{j}=ub;
+    %%construct shifted constraint;
+    b=b+sc;beq=beq+sa;
+    lb=lb-res_lb;
+    ub=ub+res_ub;
+    %figure(21);plot(1:current_n, lb,'r.-',1:current_n,ub,'bo-')
+    %%%%%%%%%%%%%%%%%%%%%%%%%
+    nonlcon=mycon(v0);%%compute nonlinear constraint;
+    test_v_in_fmincon=0;
+    [v,fval,exitflag,output,lambda]=fmincon(myfun,v0,A,b,Aeq,beq,lb,ub,nonlcon,options);
+    NF_con(j)=NF_con(j)+output.funcCount;      %counting iterations;
+    %--------------------------------------------------------------------------
+else
+    %presmoothing:
+    nit=5;
+    [A,b,Aeq,beq,lb,ub,options]=setup_par(v0,nit,res_prob);     %%set up all the constaints for fmincon;
+    if(res_prob) %%construct shifted constraint;
+        b=b+sc;beq=beq+sa;
+        lb=lb-res_lb;
+        ub=ub+res_ub;
+    end
+    vvl{j}=lb;
+    vvu{j}=ub;
+    disp('-----------------------------------------------------------------------------------');
+    fprintf('mesh grid is %d\n',current_n);
+    nonlcon=mycon(v0);
+    test_v_in_fmincon=0;
+    [v,fval,exitflag,output,lambda,grad]  = fmincon(myfun,v0,A,b,Aeq,beq,lb,ub,nonlcon,options);
+    NF_con(j)=NF_con(j)+output.funcCount;
+    %----------------------------------------------------------------------
+    %construct shifted function :if for constraint problem, downdate will
+    %be worked on lagrangian gradient;
+    
+    [Fvmg,Gvmg]=sfun_mg(v);
+    current_v=downdate_variable(v,0);
+    bind{j+1}=v;
+    bindH{j+1}=current_v;
+    %restrict variables and constraints to coarse level;
+    [current_lameqlin,current_lamineqlin,current_lameqnonlin,current_lamineqnonlin]=downdate_constraint(lambda.eqlin,lambda.ineqlin,lambda.eqnonlin,lambda.ineqnonlin);
+    
+    %%---restrict lagrangian multiplier to coarse level;
+    [current_lamlower]=downdate_bounds(lambda.lower);
+    [current_lamupper]=downdate_bounds(lambda.upper);
+    current_lambda=struct('eqlin',{current_lameqlin},'ineqlin',{current_lamineqlin},'eqnonlin',{current_lameqnonlin},'ineqnonlin',{current_lamineqnonlin},'lower',{current_lamlower},'upper',{current_lamupper});
+
+    [nonl_ineq,nonl_eq]=mycon(v);     %%-------evaluate nonlinear equality and inequality constraints at point v;
+    [ax,cx]=eval_licon(Aeq,beq,A,b,v);    %%-------evaluate linear equality and inequality constraints at point v;
+    [current_a,current_c,current_nonl_eq,current_nonl_ineq]=downdate_constraint(ax,cx,nonl_eq,nonl_ineq);    %%---restrict constraints to coarse level;
+    [current_sa,current_sc,current_sna,current_snc]=downdate_constraint(sa,sc,sna,snc);    %%---restrict surrogate term of constraints to coarse level;
+    [Fv,Gv]=sfun(v);
+    Gv=eval_LG(Gv,v,Aeq,A,lambda);    %%---evaluate lagrangian gradient at v;
+
+    dGv=downdate_variable(Gv,1); %%---restrict lagrangian gradient to coarse level;
+    [current_A,current_b,current_Aeq,current_beq,current_lb,current_ub,options]=setup_par(current_v,nit,res_prob);
+    [current_nonlineq,current_nonleq]=mycon(current_v);
+    %%---------------------------------------------------------------------
+    %%---restrict lower and upper bounds to coarse level;
+    if(bounds_con==0)
+        current_res_lb=[];
+        current_res_ub=[];
+    else
+    current_res_lb=downdate_bounds(res_lb)+current_lb-current_v-downdate_bounds(lb-v);
+%     figure(20);subplot(2,2,1);plot(1:N(2),current_res_lb,'ro-'); subplot(2,2,2);plot(1:N(2),downdate_bounds(res_lb),'b.-')
+%     subplot(2,2,3);plot(1:N(2),current_lb-current_v-downdate_bounds(lb-v)
+%     ,'r.-');subplot(2,2,4);plot(1:N(2),downdate_bounds(lb-v),'r.-')
+    current_res_ub=downdate_bounds(res_ub)+current_v-current_ub-downdate_bounds(v-ub);
+    if (isnan(current_res_lb))
+        current_res_lb=zeros(size(current_v));
+    end
+    if (isnan(current_res_ub))
+        current_res_ub=zeros(size(current_v));
+    end
+    end
+    %%---construct bound constraint of surrogate model for coarse level;if no bound constraints, corresponding surrogate bound term is zero;
+    [current_ax,current_cx]=eval_licon(current_Aeq,current_beq,current_A,current_b,current_v);
+    current_sa=current_sa+current_ax-current_a;
+    current_sc=current_sc+current_cx-current_c;
+    current_sna=current_sna+current_nonleq-current_nonl_eq;
+    current_snc=current_snc+current_nonlineq-current_nonl_ineq;
+    %%---------------------------------------------------------------------
+    fnl2=downdate_variable(fnl,1);
+    j=j+1;
+    current_n =N(j);
+    [fv2,Gv2]=sfun(current_v);
+    Gv2=eval_LG(Gv2,current_v,current_Aeq,current_A,current_lambda);
+    tau         = Gv2 - dGv;
+    fnl2        = fnl2 + tau;  %%%%---surrogate model;
+    [e2,current_lambda]=multigrid_con(current_v,fnl2,1,current_a,current_sa,current_c,current_sc,current_nonleq,current_sna,current_nonlineq,current_snc,current_res_lb,current_res_ub);
+    
+    j=j-1;
+    current_n=N(j);
+    figure(findobj('Tag', 'multigrid_graph'));
+    GRAPH_N_NEW = current_n;
+    IND_OLD = find(N==GRAPH_N_OLD);
+    IND_NEW = find(N==GRAPH_N_NEW);
+    plot([GRAPH_INDEX_OLD GRAPH_INDEX_OLD+1],[IND_OLD IND_NEW]);
+    plot([GRAPH_INDEX_OLD GRAPH_INDEX_OLD+1],[IND_OLD IND_NEW],'x');
+    GRAPH_N_OLD = current_n;
+    GRAPH_INDEX_OLD = GRAPH_INDEX_OLD+1;
+    
+    e = update(e2-current_v,1);% update correction;
+    
+       %%%%####################################################################
+   %%%%test analytic result
+%    AA=inv(-L{j+1});
+%    teste=update(AA*dGv,1);
+%    figure(34);plot(1:N(j+1),e2-current_v,'ro-',1:N(j+1),-AA*dGv,'b*-')
+%    figure(43);plot(1:current_n,e,'ro-',1:current_n,-teste,'b*-');title('search direction (red), exact direction (blue)')
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%#################################################################
+    current_fnl = fnl;
+    nit=5;
+    [A,b,Aeq,beq,lb,ub,options]=setup_par(v,nit,res_prob);
+   % figure(12);plot(1:current_n,lb,'r.-',1:current_n,ub,'b.-')
+    [Fvmg,Gvmg]=eval_merit(Fvmg,Gvmg,v,Aeq,beq,A,b,lb,ub,output,lambda,1);
+    testd       = e'*Gvmg; % test if it's decent direction
+    %%---------------------------------------------------------------------
+    %%---------------------------------------------------------------------
+         if (current_n==N(1))
+         %load vstar;
+         load vs1su63; vstar = vs1su63;
+         %load vs_129_b; vstar = vs_129_b;
+         figure(13);
+         subplot(1,2,1);
+         plot(e,'r.-'); title('Search direction (fine)')
+         subplot(1,2,2);
+         plot(vstar-v,'b.-'); title('Step to Solution (fine)')
+         %tt = linspace(0,1,current_n+2)'; tt = tt(2:end-1);
+         figure(16); plot(1:current_n^2,vstar-v,'b.',1:current_n^2,e,'r.'); title('Step to solution (blue), Search direction (red)')
+         figure(20);
+         subplot(1,2,1)
+         plot(v,'g'); title('Current estimate of solution')
+         subplot(1,2,2)
+         plot(vstar,'k'); title('Solution')
+         
+         disp('Hit any key to continue')
+         pause(1)
+    end
+% % %%-------------------------------------------------------------------------
+%%-------------------------------------------------------------------------
+    if (testd<0)
+        alpha0 = 1;
+        oldv=v;
+        [v] = lin(e, v, Fvmg, alpha0, myfun,Aeq,beq,A,b,lb,ub,output,lambda); % use Amijo to find step size working on merit function;
+%          figure(28);subplot(1,2,1);plot(1:current_n,oldv,'r.-',1:current_n,v,'bo-');
+%          eee=v-oldv;
+%            subplot(1,2,2); plot(1:current_n,v-oldv,'g*-'), for i=248:254  text(i,eee(i),num2str(i));end
+%         eee=norm(oldv-v,'inf')
+
+        v_after_r = v;
+    else
+        disp('No descent direction: no step taken')
+        v  = v + 0*e;
+    end;
+    v_after_r=v;
+    
+    
+    disp('-----------------------------------------------------------------------------------');
+    %--------------------------------post-smoothing:-----------------------
+    fprintf('mesh grid is %d\n',current_n);
+    [A,b,Aeq,beq,lb,ub,options]=setup_par(v,nit,res_prob);
+    if(res_prob)
+        b=b+sc;beq=beq+sa;
+        lb=lb-res_lb;
+        ub=ub+res_ub;
+    end
+    nonlcon=mycon(v);
+    test_v_in_fmincon=1;
+    indd=find(v>ub)
+    [v,fval,exitflag,output,lambda]  = fmincon(myfun,v,A,b,Aeq,beq,lb,ub,nonlcon,options);
+    NF_con(j)=NF_con(j)+output.funcCount;
+end
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+3  Inf
+engy = 0.009268
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+engy = 0.009259
+errAll = 0.004351
+errAll = 0.000321
+errAll = 0.000121
+errAll = 0.000121
+errAll = 0.000026
+errorV = 0.000026
+error0= 0.011547
+RelaxTotal = 3.000000
+rho = errorV(Ncycles)/error0 = 0.002242
+rho = rho^(1/Ncycles)=0.002242

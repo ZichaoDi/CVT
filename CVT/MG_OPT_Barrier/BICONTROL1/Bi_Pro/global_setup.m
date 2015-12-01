@@ -1,0 +1,1 @@
+function global_setup(n,v0)

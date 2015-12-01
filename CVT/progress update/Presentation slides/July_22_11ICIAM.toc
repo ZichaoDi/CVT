@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Outline}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Outline}{2}{0}{1}
+\beamer@sectionintoc {2}{CVT background}{3}{0}{2}
+\beamer@subsectionintoc {2}{1}{Introduction}{3}{0}{2}
+\beamer@subsectionintoc {2}{2}{Previous Method}{4}{0}{2}
+\beamer@sectionintoc {3}{Introduction of MG/OPT}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{Backgroud}{5}{0}{3}
+\beamer@subsectionintoc {3}{2}{Applying MG/OPT to CVT on CVT}{9}{0}{3}
+\beamer@sectionintoc {4}{Numerical Experiments}{10}{0}{4}
+\beamer@subsectionintoc {4}{1}{1-D case}{10}{0}{4}
+\beamer@sectionintoc {5}{Comments and Conclustions}{16}{0}{5}
